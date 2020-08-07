@@ -1,0 +1,49 @@
+##########################################################################
+# INTER-NMI BLOCKCHAIN NETWORK EXPERIMENT - CRYPTO CONFIG - July/2020
+# This profile detemines the nmiblocknet configuration. It follows the 
+# standard from other Fabric networks configuration.
+# It contemplates an inter NMI blockchain network consortium with Inmetro 
+# and PTB (so far). The present configuration creates two ordinary peers
+# for each organization.
+# It also includes a solo orderer on the domain orderer.nmi. 
+# Author: Wilson S. Melo Jr. - Inmetro
+##########################################################################
+#
+# ---------------------------------------------------------------------------
+# "OrdererOrgs" - Define as organizacoes gerenciando os peers de consenso
+# ---------------------------------------------------------------------------
+OrdererOrgs:
+  # ---------------------------------------------------------------------------
+  # Orderer
+  # ---------------------------------------------------------------------------
+  - Name: Orderer
+    # Usando quinta.com como dominio raiz para todos os peers
+    Domain: orderer.nmi
+    Specs:
+      - Hostname: orderer.nmi
+# ---------------------------------------------------------------------------
+# "PeerOrgs" - Define as organizacoes que gerenciam os peers
+# ---------------------------------------------------------------------------
+PeerOrgs:
+  # ---------------------------------------------------------------------------
+  # Sao criadas duas organizacoes (LaSIGE e Inmetro), cada uma com 4 peers
+  # ---------------------------------------------------------------------------
+  - Name: PTB
+    Domain: ptb.de
+    Template:
+      # Define o numero de peers
+      Count: 2
+      # Start: 5
+      # Hostname: {{.Prefix}}{{.Index}} # default
+    Users:
+      Count: 0
+
+  - Name: Inmetro
+    Domain: inmetro.br
+    Template:
+      # Define o numero de peers
+      Count: 4
+      # Start: 5
+      # Hostname: {{.Prefix}}{{.Index}} # default
+    Users:
+      Count: 0
