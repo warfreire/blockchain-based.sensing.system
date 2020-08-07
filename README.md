@@ -10,18 +10,23 @@ Coordination:
 * *Daniel Peters (peters@ptb.de)*
 * *Wladmir Chapetta (wachapetta@inmetro.gov.br)*
 
-*Revised in August 7th, 2020.*
+*Revised on August 7th, 2020.*
 
 ## What the Inter-NMI Experiment is
 
-The Inter-NMI Experiment is an experimental blockchain network formed by National Metrology Institutes around the world. It integrates servers provided by different NMIs and enables the implementation and test of smart contract-based applications related to metrology and conformity assessment. Researcher teams in each NMI can create their smart contracts and test them with the support from other NMIs.
+The Inter-NMI Experiment is an experimental blockchain network formed by National Metrology Institutes around the world. It integrates servers provided by different NMIs and enables the implementation and test of smart contract-based applications related to metrology and conformity assessment. Research teams in each NMI can create their smart contracts and test them with the support from other NMIs.
 
 We adopt [Hyperledger Fabric 1.4 LTS](https://hyperledger-fabric.readthedocs.io/en/release-1.4/) as our blockchain platform. We configure a globally distributed blockchain network that supports the execution of Golang chaincodes.
 
 We describe in the next sections the main aspects related to the Inter-NMI blockchain network customizing, how to instantiate the network, how to deploy a chaincode, and how to use a simple Python client to invoke it.
 
 We also invite the reader to check out our previous publications related to this project. They are listed below:
-* [here](https://link.springer.com/chapter/10.1007%2F978-3-030-39445-5_51).
+[Melo, W., Machado, R. C., Peters, D., & Moni, M. (2020,). Public-Key Infrastructure for Smart Meters using Blockchains. In 2020 IEEE International Workshop on Metrology for Industry 4.0 & IoT (pp. 429-434). IEEE.](https://doi.org/10.1109/MetroInd4.0IoT48571.2020.9138246)
+[Yurchenko, A., Moni, M., Peters, D., Nordholz, J., & Thiel, F. (2020). Security for Distributed Smart Meter : Blockchain-based Approach , Ensuring Privacy by Functional Encryption. In Proceedings of the 10th International Conference on Cloud Computing and Services Science - CLOSER (pp. 292–301).](https://doi.org/10.5220/0009377702920301)
+[Peters, D., Yurchenko, A., Melo, W., Shirono, K., Usuda, T., Seifert, J. P., & Thiel, F. (2020,). IT Security for Measuring Instruments: Confidential Checking of Software Functionality. In Future of Information and Communication Conference (pp. 701-720). Springer, Cham.](https://doi.org/10.1007/978-3-030-39445-5_51)
+[Melo Jr., W. S., Bessani, A., Neves, N., Santin, A. O., & Carmo, L. F. R. C. (2019). Using Blockchains to Implement Distributed Measuring Systems. IEEE Transactions on Instrumentation and Measurement, 68(5), 1503–1512.](https://doi.org/10.1109/TIM.2019.2898013)
+[Peters, D., Wetzlich, J., Thiel, F., & Seifert, J. (2018). Blockchain Applications for Legal Metrology. In IEEE International Instrumentation and Measurement Technology Conference (p. 6). Houston, Texas, USA.](https://doi.org/10.1109/I2MTC.2018.8409668)
+
 
 ## The customized blockchain network
 
