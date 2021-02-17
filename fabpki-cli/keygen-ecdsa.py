@@ -8,6 +8,7 @@
         
     :copyright: © 2020 by Wilson Melo Jr.
 """
+
 import sys
 from ecdsa import SigningKey, NIST256p
 

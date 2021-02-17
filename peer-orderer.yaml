@@ -47,7 +47,7 @@ services:
     # in one place alone.)
     extra_hosts:
       #- "orderer.nmi:${ORDERER_IP}"
-      - "peer0.ptb.de:${PTB_IP_1}"
-      - "peer1.ptb.de:${PTB_IP_1}"
-      - "peer0.inmetro.br:${INMETRO_IP_1}"
-      - "peer1.inmetro.br:${INMETRO_IP_1}"
+      - "peer0.1dn.mb:${PTB_IP_1}"
+      - "peer1.1dn.mb:${PTB_IP_1}"
+      - "peer0.2dn.mb:${INMETRO_IP_1}"
+      - "peer1.2dn.mb:${INMETRO_IP_1}"

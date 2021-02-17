@@ -30,7 +30,7 @@
     "InmetroMSP":{
       "mspid": "InmetroMSP",
       "adminPrivateKey":{
-         "path": "/tmp/crypto/peerOrganizations/inmetro.br/users/Admin@inmetro.br/msp/keystore/e16b3305d87eb3973f9d33109bcd54508293ab385d54f2e509c56e701d7f3dcd_sk"
+         "path": "/tmp/crypto/peerOrganizations/inmetro.br/users/Admin@inmetro.br/msp/keystore/edeab55264620fd5d17a0b46915f0b4ba8fe989b1ba27f37b2802cd988d7b843_sk"
       },
       "signedCert":{
          "path": "/tmp/crypto/peerOrganizations/inmetro.br/users/Admin@inmetro.br/msp/signcerts/Admin@inmetro.br-cert.pem"

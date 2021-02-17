@@ -14,14 +14,14 @@ export FABRIC_CFG_PATH=$PWD
 cd "$(dirname "$0")"
 
 # generates MSP artefacts (keys, digital certificates, etc) in the folder ./crypto-config
-cryptogen extend --config=./crypto-config-nmi.yaml
+cryptogen extend --config=./crypto-config-mb.yaml
 
 # creates the genesis block
-configtxgen -profile NMIGenesis -outputBlock ./nmi-genesis.block
+configtxgen -profile MBGenesis -outputBlock ./mb-genesis.block
 
 # creates the channel config file 
-configtxgen -profile NMIChannel -outputCreateChannelTx ./nmi-channel.tx -channelID nmi-channel
+configtxgen -profile MBChannel -outputCreateChannelTx ./mb-channel.tx -channelID mb-channel
 
-# creates anchors config for each organization (PTB and Inmetro, so far)
-configtxgen -profile NMIChannel -outputAnchorPeersUpdate ptb.de-anchors.tx -channelID nmi-channel -asOrg PTB
-configtxgen -profile NMIChannel -outputAnchorPeersUpdate inmetro.br-anchors.tx -channelID nmi-channel -asOrg Inmetro
+# creates anchors config for each organization 
+configtxgen -profile MBChannel -outputAnchorPeersUpdate 1dn.mb-anchors.tx -channelID mb-channel -asOrg 1DN
+configtxgen -profile MBChannel -outputAnchorPeersUpdate 2dn.mb-anchors.tx -channelID mb-channel -asOrg 2DN

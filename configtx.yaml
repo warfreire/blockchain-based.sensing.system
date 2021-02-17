@@ -29,20 +29,20 @@ Organizations:
         ID: OrdererMSP
 
         # MSPDir is the filesystem path which contains the MSP configuration
-        MSPDir: crypto-config/ordererOrganizations/orderer.nmi/msp
+        MSPDir: crypto-config/ordererOrganizations/orderer.mb/msp
 
         # turn off security for the channel
         AdminPrincipal: Role.MEMBER
 
-    - &PTB
+    - &1DN
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: PTB
+        Name: 1DN
 
         # ID to load the MSP definition as
-        ID: PTBMSP
+        ID: 1DNMSP
 
-        MSPDir: crypto-config/peerOrganizations/ptb.de/msp
+        MSPDir: crypto-config/peerOrganizations/1dn.mb/msp
 
         # turn off security for the peer
         AdminPrincipal: Role.MEMBER
@@ -51,18 +51,18 @@ Organizations:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: peer0.ptb.de
+            - Host: peer0.1dn.mb
               Port: 7051
 
-    - &Inmetro
+    - &2DN
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: Inmetro
+        Name: 2DN
 
         # ID to load the MSP definition as
-        ID: InmetroMSP
+        ID: 2DNMSP
 
-        MSPDir: crypto-config/peerOrganizations/inmetro.br/msp
+        MSPDir: crypto-config/peerOrganizations/2dn.mb/msp
 
         # turn off security for the peer
         AdminPrincipal: Role.MEMBER
@@ -71,7 +71,7 @@ Organizations:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: peer0.inmetro.br
+            - Host: peer0.2dn.mb
               Port: 7051
 
 
@@ -90,7 +90,7 @@ Orderer: &OrdererDefaults
     OrdererType: solo
 
     Addresses:
-        - orderer.nmi:7050
+        - orderer.mb:7050
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s
@@ -143,20 +143,20 @@ Application: &ApplicationDefaults
 #
 ################################################################################
 Profiles:
-    NMIGenesis:
+    MBGenesis:
         Orderer:
             <<: *OrdererDefaults
             Organizations:
                 - *Orderer
         Consortiums:
-            NMIConsortium:
+            MBConsortium:
                 Organizations:
-                    - *PTB
-                    - *Inmetro
-    NMIChannel:
-        Consortium: NMIConsortium
+                    - *1DN
+                    - *2DN
+    MBChannel:
+        Consortium: MBConsortium
         Application:
             <<: *ApplicationDefaults
             Organizations:
-                - *PTB
-                - *Inmetro
+                - *1DN
+                - *2DN

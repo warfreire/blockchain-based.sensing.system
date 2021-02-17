@@ -11,10 +11,10 @@
 
 # Remember to configure these auxiliar vars. They must reflect any name change
 # when necessary.
-ORDERER=orderer.nmi:7050
-CHANNEL=nmi-channel
+ORDERER=orderer.mb:7050
+CHANNEL=mb-channel
 MSPCONFIGPATH=/etc/hyperledger/admsp
-CAFILE=/etc/hyperledger/tlscacerts/tlsca.orderer.nmi-cert.pem
+CAFILE=/etc/hyperledger/tlscacerts/tlsca.orderer.mb-cert.pem
 
 # Exit on first error.
 set -e

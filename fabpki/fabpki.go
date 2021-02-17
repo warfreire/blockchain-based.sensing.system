@@ -64,6 +64,14 @@ type Meter struct {
 	PubKey string `json:"pubkey"`
 }
 
+type Message struct {
+	SenderId string `json:"senderid"`
+	Message string `json:"message"`
+	ReceiverId string `json:"receiverid"`
+	Sign string `json:"sign"`	
+}
+
+
 // PublicKeyDecodePEM method decodes a PEM format public key. So the smart contract can lead
 // with it, store in the blockchain, or even verify a signature.
 // - pemEncodedPub - A PEM-format public key
@@ -116,6 +124,10 @@ func (s *SmartContract) Invoke(stub shim.ChaincodeStubInterface) sc.Response {
 	} else if fn == "queryLedger" {
 		//execute a CouchDB query, args must include query expression
 		return s.queryLedger(stub, args)
+
+	} else if fn == "sendMessage" {
+		//send a message from an Id to another 
+		return s.sendMessage(stub, args)
 	}
 
 	//function fn not implemented, notify error
@@ -243,6 +255,68 @@ func (s *SmartContract) checkSignature(stub shim.ChaincodeStubInterface, args []
 	transactions.
 	- args[0] - sleeptime (in seconds)
 */
+
+func (s *SmartContract) sendMessage(stub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	//validate args vector lenght
+	if len(args) != 4 {
+		return shim.Error("It was expected 3 parameter: <sender ID> <message> <receiver ID> <signature>")
+	}
+
+	//gets the parameter associated with the meter ID and the digital signature
+	senderid := args[0]
+	message := args[1]
+	receiverid := args[2]
+	sign := args[3]
+
+	//loging...
+	fmt.Println("Testing args: ", senderid, message, receiverid, sign)
+
+	//retrive sender Id record
+	senderAsBytes, err := stub.GetState(senderid)
+
+	//test if we receive a valid sender ID
+	if err != nil || senderAsBytes == nil {
+		return shim.Error("Error on retrieving sender ID register")
+	}
+	
+	//retrive receiver Id record
+	receiverAsBytes, err := stub.GetState(receiverid)
+
+	//test if we receive a valid receiver ID
+	if err != nil || receiverAsBytes == nil {
+		return shim.Error("Error on retrieving receiver ID register")
+	}
+
+	//creates the message record with the respective fields
+	var message = Message{
+				SenderId : senderid,
+				Message : message,
+				ReceiverId : receiverid,
+				Sign : sign
+				}
+
+	//encapsulates meter in a JSON structure
+	messageAsBytes, _ := json.Marshal(message)
+
+	//registers meter in the ledger
+	stub.PutState(senderid, messagerAsBytes)
+
+	//loging...
+	fmt.Println("Registering message: ", message,"/nfrom: ", senderid,"to: ", receiverid)
+
+	//notify procedure success
+	return shim.Success(nil)
+
+
+/*
+	This method is a dummy test that makes the endorser "sleep" for some seconds.
+	It is usefull to check either the sleeptime affects the performance of concurrent
+	transactions.
+	- args[0] - sleeptime (in seconds)
+*/
+
+
 func (s *SmartContract) sleepTest(stub shim.ChaincodeStubInterface, args []string) sc.Response {
 	//validate args vector lenght
 	if len(args) != 1 {

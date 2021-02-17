@@ -18,18 +18,18 @@ OrdererOrgs:
   # ---------------------------------------------------------------------------
   - Name: Orderer
     # Usando quinta.com como dominio raiz para todos os peers
-    Domain: orderer.nmi
+    Domain: orderer.mb
     Specs:
-      - Hostname: orderer.nmi
+      - Hostname: orderer.mb
 # ---------------------------------------------------------------------------
 # "PeerOrgs" - Define as organizacoes que gerenciam os peers
 # ---------------------------------------------------------------------------
 PeerOrgs:
   # ---------------------------------------------------------------------------
-  # Sao criadas duas organizacoes (LaSIGE e Inmetro), cada uma com 4 peers
+  # Sao criadas duas organizacoes , cada uma com 4 peers
   # ---------------------------------------------------------------------------
-  - Name: PTB
-    Domain: ptb.de
+  - Name: 1DN
+    Domain: 1dn.mb
     Template:
       # Define o numero de peers
       Count: 2
@@ -38,11 +38,11 @@ PeerOrgs:
     Users:
       Count: 0
 
-  - Name: Inmetro
-    Domain: inmetro.br
+  - Name: 2DN
+    Domain: 2dn.mb
     Template:
       # Define o numero de peers
-      Count: 4
+      Count: 2
       # Start: 5
       # Hostname: {{.Prefix}}{{.Index}} # default
     Users:

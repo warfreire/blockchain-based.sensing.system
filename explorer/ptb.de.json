@@ -30,7 +30,7 @@
     "PTBMSP":{
       "mspid": "PTBMSP",
       "adminPrivateKey":{
-         "path": "/tmp/crypto/peerOrganizations/ptb.de/users/Admin@ptb.de/msp/keystore/90b8738d740bd3dc1ed3ebba625c5fd448f0f54b6ecebfbb9307cdb76a23a8e0_sk"
+         "path": "/tmp/crypto/peerOrganizations/ptb.de/users/Admin@ptb.de/msp/keystore/b7d5841bec769d89411cec0eed54cc5a2bc28db164391e15dfe96e4e19dc6cd6_sk"
       },
       "signedCert":{
          "path": "/tmp/crypto/peerOrganizations/ptb.de/users/Admin@ptb.de/msp/signcerts/Admin@ptb.de-cert.pem"
