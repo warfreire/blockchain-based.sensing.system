@@ -1,8 +1,8 @@
 {
 	"network-configs": {
-		"nmiblocknet_default": {
-			"name": "nmiblocknet_default",
-			"profile": "./connection-profile/ptb.de.json"
+		"mbblocknet_default": {
+			"name": "mbblocknet_default",
+			"profile": "./connection-profile/1dn.de.json"
 		}
 	},
 	"license": "Apache-2.0"

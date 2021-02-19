@@ -1,11 +1,11 @@
 ##########################################################################
 # MB BLOCKCHAIN NETWORK EXPERIMENT - MSP CONFIG - March/2021
-# This script generates the nmiblocknet MSP structure (cryptographic keys 
+# This script generates the mbblocknet MSP structure (cryptographic keys 
 # and certificates). All these stuffs are created in a directory called
 # crypto-config. The script also generates the network genesis block, the
 # mb-channel profile and the anchors profile to update the channel after
 # its creation. The script consumes the configurations in the files 
-# crypto-config-nmi.yaml and configtx.yaml.
+# crypto-config-mb.yaml and configtx.yaml.
 # Author: Wilson S. Melo Jr. - Inmetro
 ##########################################################################
 #/bin/bash

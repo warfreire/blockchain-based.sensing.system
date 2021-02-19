@@ -1,19 +1,19 @@
 {
-  "name":"nmiblocknet_default",
+  "name":"mbblocknet_default",
   "version":"1.0.0",
   "client":{
     "tlsEnable": true,
-    "channel": "nmi-channel",
+    "channel": "mb-channel",
     "adminUser": "admin",
     "adminPassword": "adminpw",
     "enableAuthentication": true,
-    "organization":"InmetroMSP"
+    "organization":"2DNMSP"
   },
   "channels": {
-    "nmi-channel": {
+    "mb-channel": {
       "peers": {
-          "peer0.inmetro.br": {},
-          "peer1.inmetro.br": {}
+          "peer0.1dn.mb": {},
+          "peer1.2dn.mb": {}
       },
       "connection": {
         "timeout": {

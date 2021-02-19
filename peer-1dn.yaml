@@ -1,8 +1,8 @@
 ##########################################################################
-# INTER-NMI BLOCKCHAIN NETWORK EXPERIMENT - PTB PEERS - July/2020
+# INTER-MB BLOCKCHAIN NETWORK EXPERIMENT - 1DN PEERS - March/2021
 # This docker config profile creates:
-# - 2 peers to the organization ptb.de (peer0 and peer1)
-# - 2 couchdb instancies, one for each peer (ptbdb0 and ptbdb1)
+# - 2 peers to the organization 1dn.mb (peer0 and peer1)
+# - 2 couchdb instancies, one for each peer (1dndb0 and 1dndb1)
 # - 1 client docker for testing and smart contract deploying (cli0)
 #   - Notice that cli0 is configured to work with peer0. If you need
 #     to operate over other peers, modify cli0 or creat a new client.
@@ -13,9 +13,9 @@ version: '2.2'
 # Use de structure networking for creating a separated network in docker.
 # I prefer to use the network default, so I keep this section commented.
 # networks:
-#   nmiblocknet:
+#   mbblocknet:
 #     external:
-#       name: nmiblocknet
+#       name: mbblocknet
 
 services:
   # We create the peers here. They follow the template strutucture of Hyperledger Fabric names,

@@ -8,13 +8,13 @@ volumes:
 networks:
   explorer-inmetro:
     external:
-      name: nmiblocknet_default
+      name: mbblocknet_default
 
 services:
   explorerdb:
     image: hyperledger/explorer-db:latest
-    container_name: explorerdb.inmetro.br
-    hostname: explorerdb.inmetro.br
+    container_name: explorerdb.2dn.mb
+    hostname: explorerdb.2dn.mb
     environment:
       - DATABASE_DATABASE=fabricexplorer
       - DATABASE_USERNAME=hppoc
@@ -24,14 +24,14 @@ services:
       - ./createdb.sh:/docker-entrypoint-initdb.d/createdb.sh
       - pgdata:/var/lib/postgresql/data
     networks:
-      - explorer-inmetro
+      - explorer-2dn
 
   explorer:
     image: hyperledger/explorer:V1.0.0
-    container_name: explorer.inmetro.br
-    hostname: explorer.inmetro.br
+    container_name: explorer.2dn.mb
+    hostname: explorer.2dn.mb
     environment:
-      - DATABASE_HOST=explorerdb.inmetro.br
+      - DATABASE_HOST=explorerdb.2dn.mb
       - DATABASE_USERNAME=hppoc
       - DATABASE_PASSWD=password
       - LOG_LEVEL_APP=debug
@@ -51,4 +51,4 @@ services:
     ports:
       - 8080:8080
     networks:
-      - explorer-inmetro
+      - explorer-2dn

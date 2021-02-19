@@ -1,0 +1,103 @@
+{
+  "name":"mbblocknet_default",
+  "description":"Connection profile to access the nmiblocknet from the PTB org",
+  "version":"0.1",
+  "client":{
+    "organization":"1dn",
+    "credentialStore":{
+      "path":"/tmp/hfc-kvs",
+      "cryptoStore":{
+        "path":"/tmp/hfc-cvs"
+      },
+      "wallet":"wallet-name"
+    }
+  },
+  "channels": {
+    "2dn-channel": {
+        "orderers": [
+            "orderer.mb"
+        ],
+        "peers": {
+            "peer0.2dn.mb": {
+                "endorsingPeer": true,
+                "chaincodeQuery": true,
+                "ledgerQuery": true,
+                "eventSource": true
+            }
+        }
+    }
+  },
+  "organizations":{
+    "orderer.mb":{
+      "mspid": "OrdererMSP",
+      "orderers": [
+        "orderer.mb"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "./crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/signcerts/Admin@orderer.nmi-cert.pem",
+          "private_key": "./crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/keystore/9aa525464adc8509d91b29dc5d1ca87adc5d31a849a5200a3fcaeb5290421d34_sk"}
+      }
+    },
+    "2dn.mb":{
+      "mspid": "2DNMSP",
+      "peers":[
+        "peer0.2dn.mb"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "./crypto-config/peerOrganizations/2dn.mb/users/Admin@2dn.mb/msp/signcerts/Admin@2dn.mb-cert.pem",
+          "private_key": "./crypto-config/peerOrganizations/2dn.mb/users/Admin@2dn.mb/msp/keystore/edeab55264620fd5d17a0b46915f0b4ba8fe989b1ba27f37b2802cd988d7b843_sk"
+        }
+      }
+    }
+  },
+  "orderers":{
+    "orderer.mb":{
+      "url":"10.0.2.15:7050",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "orderer.mb",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "./crypto-config/ordererOrganizations/orderer.mb/tlsca/tlsca.orderer.mb-cert.pem"
+      },
+      "clientKey": {
+        "path": "./crypto-config/ordererOrganizations/orderer.mb/orderers/orderer.mb.orderer.mb/tls/server.key"
+      },
+      "clientCert": {
+        "path": "./crypto-config/ordererOrganizations/orderer.mb/orderers/orderer.mb.orderer.mb/tls/server.crt"
+      }
+    }
+  },
+  "peers":{
+    "peer0.2dn.mb":{
+      "url":"10.0.2.15:7051",
+      "eventUrl":"10.0.2.15:7053",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer0.2dn.mb",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "./crypto-config/peerOrganizations/2dn.mb/tlsca/tlsca.2dn.mb-cert.pem"
+      },
+      "clientKey": {
+        "path": "./crypto-config/peerOrganizations/2dn.mb/peers/peer0.2dn.mb/tls/server.key"
+      },
+      "clientCert": {
+        "path": "./crypto-config/peerOrganizations/2dn.mb/peers/peer0.2dn.mb/tls/server.crt"
+      }
+    }
+  },
+  "certificateAuthorities":{
+    "ca.1dn.mb":{
+      "url":"https://localhost:7054",
+      "registrar":[
+        {
+          "enrollId":"admin",
+          "enrollSecret":"adminpw"
+        }
+      ]
+    }
+  }
+}
