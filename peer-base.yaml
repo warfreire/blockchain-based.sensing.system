@@ -1,9 +1,9 @@
 ##########################################################################
-# INTER-NMI BLOCKCHAIN NETWORK EXPERIMENT - PEER BASE - July/2020
+# INTER-MB BLOCKCHAIN NETWORK EXPERIMENT - PEER BASE - March/2021
 # This docker config profile defines peer base configuration. It should be
 # extended by the main docker-compose config in the files:
-# - peer-inmetro.yaml
-# - peer-ptb.yaml
+# - peer-1dn.yaml
+# - peer-2dn.yaml
 # - <any future NMI added to the project>
 # Author: Wilson S. Melo Jr. - Inmetro
 ##########################################################################
@@ -18,7 +18,7 @@ services:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       # The CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE value starts chaincode containers on the same
       # bridge network as the peers (details in https://docs.docker.com/compose/networking/).
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=nmiblocknet_default
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=blockchain.sensing.system_default
       - FABRIC_LOGGING_SPEC=INFO #values are FATAL | PANIC | ERROR | WARNING | INFO | DEBUG
       - CORE_CHAINCODE_LOGGING_LEVEL=DEBUG
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB

@@ -1,5 +1,5 @@
 ##########################################################################
-# INTER-NMI BLOCKCHAIN NETWORK EXPERIMENT - CHAINCODE CONFIG - July/2020
+# INTER-MB BLOCKCHAIN NETWORK EXPERIMENT - CHAINCODE CONFIG - March/2021
 # This script requires a pre configured docker environment, with the 
 # peers and orderer associated with the respective org already started 
 # and the respective channel configured.
@@ -20,10 +20,10 @@
 
 # Remember to configure these auxiliar vars. They must reflect any name change
 # when necessary.
-ORDERER=orderer.nmi:7050
-CHANNEL=nmi-channel
+ORDERER=orderer.mb:7050
+CHANNEL=mb-channel
 MSPCONFIGPATH=/etc/hyperledger/admsp
-CAFILE=/etc/hyperledger/tlscacerts/tlsca.orderer.nmi-cert.pem
+CAFILE=/etc/hyperledger/tlscacerts/tlsca.orderer.mb-cert.pem
 CC_INTERNAL_PATH=github.com/hyperledger/fabric/peer/channel-artifacts
 
 # Exit on first error.

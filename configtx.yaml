@@ -1,6 +1,6 @@
 ##########################################################################
-# INTER-NMI BLOCKCHAIN NETWORK EXPERIMENT - CONFIGTX - July/2020
-# This profile detemines the nmiblocknet configuration. It follows the 
+# MB BLOCKCHAIN NETWORK EXPERIMENT - CONFIGTX - March/2021
+# This profile detemines the mbblocknet configuration. It follows the 
 # standard from other Fabric networks configuration.
 # It contemplates an inter NMI blockchain network consortium with Inmetro 
 # and PTB (so far). It also includes a solo orderer Org and the profile for
