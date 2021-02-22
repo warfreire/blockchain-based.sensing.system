@@ -2,8 +2,7 @@
 # MB BLOCKCHAIN NETWORK EXPERIMENT - CONFIGTX - March/2021
 # This profile detemines the mbblocknet configuration. It follows the 
 # standard from other Fabric networks configuration.
-# It contemplates an inter NMI blockchain network consortium with Inmetro 
-# and PTB (so far). It also includes a solo orderer Org and the profile for
+# It contemplates an inter MB blockchain network consortium with 1DN and 2DN (so far). It also includes a solo orderer Org and the profile for
 # a channel called NMIChannel. 
 # Author: Wilson S. Melo Jr. - Inmetro
 ##########################################################################
@@ -72,7 +71,7 @@ Organizations:
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
             - Host: peer0.2dn.mb
-              Port: 7052
+              Port: 7051
 
 
 ################################################################################

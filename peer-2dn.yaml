@@ -36,8 +36,8 @@ services:
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.2dn.mb:7050
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.2dn.mb:7050
     ports:
-      - 7052:7052
-      - 7054:7054
+      - 7051:7051
+      - 7053:7053
     volumes:
         - ./crypto-config/peerOrganizations/2dn.mb/peers/peer0.2dn.mb/msp:/etc/hyperledger/msp #Peers MSP credentials to the GOSSIP protocol
         - ./crypto-config/peerOrganizations/2dn.mb/peers/peer0.2dn.mb/tls:/etc/hyperledger/tls #TLS certificates
@@ -60,7 +60,7 @@ services:
     container_name: 2dndb0
     image: hyperledger/fabric-couchdb:0.4.15
     ports:
-      - 5983:5984
+      - 4984:5984
     environment:
       DB_URL: http://localhost:5983/member_db
 
@@ -79,8 +79,8 @@ services:
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.2dn.mb:7050
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.2dn.mb:7050
     ports:
-      - 8050:7050
-      - 8052:7052
+      - 9051:7051
+      - 9053:7053
     volumes:
         - ./crypto-config/peerOrganizations/2dn.mb/peers/peer1.2dn.mb/msp:/etc/hyperledger/msp #Peers MSP credentials to the GOSSIP protocol
         - ./crypto-config/peerOrganizations/2dn.mb/peers/peer1.2dn.mb/tls:/etc/hyperledger/tls #TLS certificates
@@ -104,7 +104,7 @@ services:
     container_name: 2dndb1
     image: hyperledger/fabric-couchdb:0.4.15
     ports:
-      - 6983:5984
+      - 7984:5984
     environment:
       DB_URL: http://localhost:6983/member_db
 

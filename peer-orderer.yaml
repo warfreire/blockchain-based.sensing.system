@@ -32,7 +32,7 @@ services:
       - ORDERER_GENERAL_TLS_ENABLED=true
       - ORDERER_GENERAL_TLS_PRIVATEKEY=/etc/hyperledger/tls/server.key
       - ORDERER_GENERAL_TLS_CERTIFICATE=/etc/hyperledger/tls/server.crt
-      - ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/tls/ca.crt]
+      - ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/tls/ca.crt
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
     command: orderer
     ports:
