@@ -36,7 +36,7 @@
       "users": {
         "Admin": {
           "cert": "./crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/signcerts/Admin@orderer.mb-cert.pem",
-          "private_key": "./crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/keystore/61792c5244ae94cb29d1aa4fbafe46d0c311882f571aabd65862d4c64d8c9ff8_sk"}
+          "private_key": "./crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/keystore/a08987965ca7d893e9fa39c0d92e77d122bb3e43c1bbaf5c591a72929ac4e1a2_sk"}
       }
     },
     "1dn.mb":{
@@ -48,7 +48,7 @@
       "users": {
         "Admin": {
           "cert": "./crypto-config/peerOrganizations/1dn.mb/users/Admin@ptb.de/msp/signcerts/Admin@ptb.de-cert.pem",
-          "private_key": "/home/warlley/mbblocknet/crypto-config/peerOrganizations/1dn.mb/users/Admin@ptb.de/msp/keystore/b7d5841bec769d89411cec0eed54cc5a2bc28db164391e15dfe96e4e19dc6cd6_sk"
+          "private_key": "/home/warlley/mbblocknet/crypto-config/peerOrganizations/1dn.mb/users/Admin@ptb.de/msp/keystore/6aaeeec3381d86d9b202e3bb1e869b0b624aecc75a0a0460071c00a5127603ea_sk"
         }
       }
     }

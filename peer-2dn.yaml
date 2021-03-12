@@ -1,8 +1,8 @@
 ##########################################################################
-# INTER-MB BLOCKCHAIN NETWORK EXPERIMENT - 2DN PEERS - March/2021
+# INTER-NMI BLOCKCHAIN NETWORK EXPERIMENT - INMETRO PEERS - July/2020
 # This docker config profile creates:
-# - 2 peers to the organization 2dn.mb (peer0 and peer1)
-# - 2 couchdb instancies, one for each peer (2dndb0 and 2dndb1)
+# - 2 peers to the organization inmetro.br (peer0 and peer1)
+# - 2 couchdb instancies, one for each peer (inmetrodb0 and inmetrodb1)
 # - 1 client docker for testing and smart contract deploying (cli0)
 #   - Notice that cli0 is configured to work with peer0. If you need
 #     to operate over other peers, modify cli0 or creat a new client.
@@ -30,14 +30,14 @@ services:
     container_name: peer0.2dn.mb
     environment:
       - CORE_PEER_ID=peer0.2dn.mb
-      - CORE_PEER_ADDRESS=peer0.2dn.mb:7050
+      - CORE_PEER_ADDRESS=peer0.2dn.mb:7051
       - CORE_PEER_LOCALMSPID=2DNMSP
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=2dndb0:5984
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.2dn.mb:7050
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.2dn.mb:7050
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.2dn.mb:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.2dn.mb:7051
     ports:
-      - 7051:7051
-      - 7053:7053
+      - 9050:7051
+      - 9053:7053
     volumes:
         - ./crypto-config/peerOrganizations/2dn.mb/peers/peer0.2dn.mb/msp:/etc/hyperledger/msp #Peers MSP credentials to the GOSSIP protocol
         - ./crypto-config/peerOrganizations/2dn.mb/peers/peer0.2dn.mb/tls:/etc/hyperledger/tls #TLS certificates
@@ -60,9 +60,9 @@ services:
     container_name: 2dndb0
     image: hyperledger/fabric-couchdb:0.4.15
     ports:
-      - 4984:5984
+      - 7983:5984
     environment:
-      DB_URL: http://localhost:5983/member_db
+      DB_URL: http://localhost:7983/member_db
 
   peer1.2dn.mb:
     # I am using a base config in peer-base.yaml. Parameters that are the same for all the peers
@@ -73,14 +73,14 @@ services:
     container_name: peer1.2dn.mb
     environment:
       - CORE_PEER_ID=peer1.2dn.mb
-      - CORE_PEER_ADDRESS=peer1.2dn.mb:7050
-      - CORE_PEER_LOCALMSPID=InmetroMSP
+      - CORE_PEER_ADDRESS=peer1.2dn.mb:7051
+      - CORE_PEER_LOCALMSPID=2DNMSP
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=2dndb1:5984
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.2dn.mb:7050
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.2dn.mb:7050
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.2dn.mb:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.2dn.mb:7051
     ports:
-      - 9051:7051
-      - 9053:7053
+      - 10051:7051
+      - 10053:7053
     volumes:
         - ./crypto-config/peerOrganizations/2dn.mb/peers/peer1.2dn.mb/msp:/etc/hyperledger/msp #Peers MSP credentials to the GOSSIP protocol
         - ./crypto-config/peerOrganizations/2dn.mb/peers/peer1.2dn.mb/tls:/etc/hyperledger/tls #TLS certificates
@@ -104,20 +104,20 @@ services:
     container_name: 2dndb1
     image: hyperledger/fabric-couchdb:0.4.15
     ports:
-      - 7984:5984
+      - 8983:5984
     environment:
-      DB_URL: http://localhost:6983/member_db
+      DB_URL: http://localhost:8983/member_db
 
   # At the end, I am including an instance of a cli container to make tests in the same machine
   # where the peers are running. This container can be instantiated independently in a client
   # machine. You just need to worry about the proper domain names resolution.
-  cli0:
+  cli1:
     extends:    
       file: peer-base.yaml
       service: cli-base  
-    container_name: cli0
+    container_name: cli1
     environment:
-      - CORE_PEER_ID=cli0
+      - CORE_PEER_ID=cli1
       - CORE_PEER_ADDRESS=peer0.2dn.mb:7051
       - CORE_PEER_LOCALMSPID=2DNMSP
     # command: /bin/bash -c './scripts/script.sh ${CHANNEL_NAME}; sleep $TIMEOUT'
@@ -134,7 +134,7 @@ services:
       - "orderer.mb:${ORDERER_IP}"
       - "peer0.1dn.mb:${PTB_IP_1}"
       - "peer1.1dn.mb:${PTB_IP_1}"
-      #- "peer0.2dn.mb:${2DN_IP_1}"
-      #- "peer1.2dn.mb:${2DN_IP_1}"
+      #- "peer0.2dn.mb:${INMETRO_IP_1}"
+      #- "peer1.2dn.mb:${INMETRO_IP_1}"
     depends_on:
       - peer0.2dn.mb

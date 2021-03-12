@@ -36,7 +36,7 @@
       "users": {
         "Admin": {
           "cert": "./crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/signcerts/Admin@orderer.nmi-cert.pem",
-          "private_key": "./crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/keystore/9aa525464adc8509d91b29dc5d1ca87adc5d31a849a5200a3fcaeb5290421d34_sk"}
+          "private_key": "./crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/keystore/a08987965ca7d893e9fa39c0d92e77d122bb3e43c1bbaf5c591a72929ac4e1a2_sk"}
       }
     },
     "2dn.mb":{
@@ -47,7 +47,7 @@
       "users": {
         "Admin": {
           "cert": "./crypto-config/peerOrganizations/2dn.mb/users/Admin@2dn.mb/msp/signcerts/Admin@2dn.mb-cert.pem",
-          "private_key": "./crypto-config/peerOrganizations/2dn.mb/users/Admin@2dn.mb/msp/keystore/edeab55264620fd5d17a0b46915f0b4ba8fe989b1ba27f37b2802cd988d7b843_sk"
+          "private_key": "./crypto-config/peerOrganizations/2dn.mb/users/Admin@2dn.mb/msp/keystore/33092a50f7fee88660616501c9bd32adb272d639f9a8067469d22b7dd36fb5ad_sk"
         }
       }
     }

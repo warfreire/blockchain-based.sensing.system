@@ -289,18 +289,17 @@ func (s *SmartContract) sendMessage(stub shim.ChaincodeStubInterface, args []str
 	}
 
 	//creates the message record with the respective fields
-	var message = Message{
+	var msg = Message{
 				SenderId : senderid,
 				Message : message,
 				ReceiverId : receiverid,
-				Sign : sign
-				}
+				Sign : sign }
 
 	//encapsulates meter in a JSON structure
-	messageAsBytes, _ := json.Marshal(message)
+	msgAsBytes, _ := json.Marshal(message)
 
 	//registers meter in the ledger
-	stub.PutState(senderid, messagerAsBytes)
+	stub.PutState(senderid, msgAsBytes)
 
 	//loging...
 	fmt.Println("Registering message: ", message,"/nfrom: ", senderid,"to: ", receiverid)
@@ -318,7 +317,7 @@ func (s *SmartContract) sendMessage(stub shim.ChaincodeStubInterface, args []str
 
 
 func (s *SmartContract) sleepTest(stub shim.ChaincodeStubInterface, args []string) sc.Response {
-	//validate args vector lenght
+	
 	if len(args) != 1 {
 		return shim.Error("It was expected 1 parameter: <sleeptime>")
 	}
