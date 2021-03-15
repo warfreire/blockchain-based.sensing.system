@@ -64,9 +64,9 @@ type Meter struct {
 	PubKey string `json:"pubkey"`
 }
 
-type Message struct {
+type AISmsg struct {
 	SenderId string `json:"senderid"`
-	Message string `json:"message"`
+	AISmsg string `json:"AISmsg"`
 	ReceiverId string `json:"receiverid"`
 	Sign string `json:"sign"`	
 }
@@ -109,6 +109,10 @@ func (s *SmartContract) Invoke(stub shim.ChaincodeStubInterface) sc.Response {
 		//inserts a measurement which increases the meter consumption counter. The measurement
 		return s.checkSignature(stub, args)
 
+	} else if fn == "sendMessage" {
+		//send a message from an Id to another 
+		return s.sendMessage(stub, args)
+
 	} else if fn == "sleepTest" {
 		//retrieves the accumulated consumption
 		return s.sleepTest(stub, args)
@@ -125,9 +129,7 @@ func (s *SmartContract) Invoke(stub shim.ChaincodeStubInterface) sc.Response {
 		//execute a CouchDB query, args must include query expression
 		return s.queryLedger(stub, args)
 
-	} else if fn == "sendMessage" {
-		//send a message from an Id to another 
-		return s.sendMessage(stub, args)
+
 	}
 
 	//function fn not implemented, notify error
@@ -289,17 +291,17 @@ func (s *SmartContract) sendMessage(stub shim.ChaincodeStubInterface, args []str
 	}
 
 	//creates the message record with the respective fields
-	var msg = Message{
+	var MSG = AISmsg{
 				SenderId : senderid,
-				Message : message,
+				AISmsg : message,
 				ReceiverId : receiverid,
-				Sign : sign }
+				Sign : sign				}
 
 	//encapsulates meter in a JSON structure
-	msgAsBytes, _ := json.Marshal(message)
+	MSGAsBytes, _ := json.Marshal(MSG)
 
 	//registers meter in the ledger
-	stub.PutState(senderid, msgAsBytes)
+	stub.PutState(senderid, messagerAsBytes)
 
 	//loging...
 	fmt.Println("Registering message: ", message,"/nfrom: ", senderid,"to: ", receiverid)
@@ -317,7 +319,7 @@ func (s *SmartContract) sendMessage(stub shim.ChaincodeStubInterface, args []str
 
 
 func (s *SmartContract) sleepTest(stub shim.ChaincodeStubInterface, args []string) sc.Response {
-	
+	//validate args vector lenght
 	if len(args) != 1 {
 		return shim.Error("It was expected 1 parameter: <sleeptime>")
 	}
