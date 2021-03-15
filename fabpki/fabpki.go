@@ -309,7 +309,7 @@ func (s *SmartContract) sendMessage(stub shim.ChaincodeStubInterface, args []str
 	//notify procedure success
 	return shim.Success(nil)
 
-
+}
 /*
 	This method is a dummy test that makes the endorser "sleep" for some seconds.
 	It is usefull to check either the sleeptime affects the performance of concurrent
