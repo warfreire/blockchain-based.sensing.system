@@ -1,5 +1,5 @@
 /////////////////////////////////////////////
-//    THE BLOCKCHAIN PKI EXPERIMENT     ////
+//    THE BLOCKCHAIN MMS EXPERIMENT     ////
 ///////////////////////////////////////////
 /*
 	This is the fabpki, a chaincode that implements a Public Key Infrastructure (PKI)
@@ -8,8 +8,8 @@
 	to store measuring instruments public keys in the ledger, and also to verify
 	digital signatures that are supposed to come from these instruments.
 
-	@author: Wilson S. Melo Jr.
-	@date: Oct/2019
+	@authors: Wilson S. Melo Jr. / Warlley Paulo Freire
+	@date: Nov/2020
 */
 package main
 
