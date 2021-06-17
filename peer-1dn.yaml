@@ -1,5 +1,5 @@
 ##########################################################################
-# INTER-MB BLOCKCHAIN NETWORK EXPERIMENT - 1DN PEERS - March/2021
+# BLOCKCHAIN MMS EXPERIMENT - 1DN PEERS - March/2021
 # This docker config profile creates:
 # - 2 peers to the organization 1dn.mb (peer0 and peer1)
 # - 2 couchdb instancies, one for each peer (1dndb0 and 1dndb1)
