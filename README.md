@@ -44,7 +44,6 @@ All the configuration files related to the blockchain network are in the base fo
 * [crypto-config-mb.yaml](crypto-config-nmi.yaml): (Membership Service Provider) configuration. We generate all the digital certificates from it.
 * [peer-ordererer.yaml](peer-orderer.yaml): contains the orderer docker container configuration for the Orderer organization.
 * [peer-1dn.yaml](peer-1dn.yaml): contains the docker containers configuration for the PTB peers. It extends the file [peer-base.yaml](peer-base.yaml), which constitutes a template of standard configuration items.
-* [peer-2dn.yaml](peer-inmetro.yaml): contains the docker containers configuration for the Inmetro peers. It also extends the file [peer-base.yaml](peer-base.yaml), just like the PTB peers configuration.
 * [.env](.env): this file works as a source for environment variables in the docker configuration. So we use it to transcribe the IP addresses of each peer.
 
 If you are not used to the Hyperledger Fabric, we strongly recommend this [tutorial](https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html). It teaches in detail how to create a basic Fabric network.
