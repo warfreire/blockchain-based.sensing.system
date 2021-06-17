@@ -252,8 +252,36 @@ CouchDB web interface also integrates the **Mango** tool for querying data. You 
 }
 ```
 
-## Perfomance Analyzing Scripts
+## Perfomance Analyzing
 
+To analyze the feasibility of the Blockchain-based MMS, we evaluate the performance of the system. First we compare the client CPU and MEM consumption sending the AIS data to the server through SSH and then through blockchain transactions. We chose SSH protocol because, like blockchain mechanisms, it also employs symmetric and asymmetric cryptography.
 
+To send AIS data through SSH, run the following script on the client:
 
+```console
+./sendNMEA.sh
+```
 
+And then simultaneously run the script that capture the client CPU and MEM consumption and save it in /tmp/medicao.txt:
+
+```console
+./mem_cpu.sh
+```
+
+Thereon you can send the AIS data through blockchain transactions and compare each performance to evaluate the blockchain overhead. Don't forget that you need to run all the containers, create the channel among the peers and install/instantiate the chaincode as explained in the previous topics. 
+
+Then you need to invoke the python client function sendMessage.py to start sending each NMEA string as a transaction to the blockchain server:
+
+```console
+python3 sendMessage.py
+```
+And then simultaneously run the script that capture the client CPU and MEM consumption and save it in /tmp/medicao.txt:
+
+```console
+./mem_cpu.sh
+```
+
+Finally, you also need to simultaneously run the script that captures CPU and MEM consumption of each blockchain container in the server: 
+```console
+./dockerstats.sh
+```
