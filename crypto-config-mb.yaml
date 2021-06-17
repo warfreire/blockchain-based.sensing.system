@@ -1,5 +1,5 @@
 ##########################################################################
-# INTER-MB BLOCKCHAIN NETWORK EXPERIMENT - CRYPTO CONFIG - March/2021
+# BLOCKCHAIN MMS EXPERIMENT - CRYPTO CONFIG - March/2021
 # This profile detemines the mbblocknet configuration. It follows the 
 # standard from other Fabric networks configuration.
 # It contemplates an inter NMI blockchain network consortium with 1DN and 2DN (so far). The present configuration creates two ordinary peers
