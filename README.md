@@ -281,7 +281,7 @@ And then simultaneously run the script that capture the client CPU and MEM consu
 ./mem_cpu.sh
 ```
 
-Finally, you also need to simultaneously run the script that captures CPU and MEM consumption of each blockchain container in the server: 
+Finally, you also need to simultaneously run the script that captures CPU and MEM consumption of each blockchain container in the server and save it in cpu.stats.txt: 
 ```console
 ./dockerstats.sh
 ```
