@@ -213,7 +213,7 @@ sudo make install
 ```
 
 ### Configure the JSON network profile
-The Python SDK applications depend on a **network profile** encoded in JSON format. Since we have two independent organizations, the network profile changes accordingly to them. In this repository, we provide the files [1dn.mb.json](fabpki-cli/1dn.mb.json) and [inmetro.br.json](fabpki-cli/inmetro.br.json). The network profile keeps the necessary credentials to access the blockchain network. You must configure this file properly every time that you create new digital certificates in the MSP:
+The Python SDK applications depend on a **network profile** encoded in JSON format and the network profile changes accordingly to them. In this repository, we provide the file [1dn.mb.json](fabpki-cli/1dn.mb.json). The network profile keeps the necessary credentials to access the blockchain network. You must configure this file properly every time that you create new digital certificates in the MSP:
 
 * Open the respective .json in a text editor;
 * Check for the entries called "tlsCACerts", "clientKey", "clientCert", "cert" and "private_key" on each organization. Notice that they point out to different files into the (./cripto-config) directory that corresponds to digital certificates and keys of each organization. The private key must correspond to the user who will submit the transactions (by default, we use Admin);
