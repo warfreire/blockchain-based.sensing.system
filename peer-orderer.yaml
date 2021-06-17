@@ -1,5 +1,5 @@
 ##########################################################################
-# INTER-MB BLOCKCHAIN NETWORK EXPERIMENT - SOLO ORDERER - March/2021
+# BLOCKCHAIN MMS EXPERIMENT - SOLO ORDERER - March/2021
 # This docker config profile creates a solo orderer service, under the 
 # domain name orderer.mb.
 # Author: Wilson S. Melo Jr. - Inmetro
