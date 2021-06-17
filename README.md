@@ -95,7 +95,7 @@ docker-compose -f peer-1dn.yaml up -d
 If your organization is also responsible for hosting the orderer service, you also need to start it. You can use the same command mentioned before, only replacing the .yaml file with [peer-orderer.yaml](peer-orderer.yaml). If this container is running in the same server that hosts your ordinary containers, you *MUST* start them together, by informing both files:
 
 ```console
-docker-compose -f peer-orderer.yaml -f peer-ptb.yaml up -d
+docker-compose -f peer-orderer.yaml -f peer-1dn.yaml up -d
 ```
 
 The same tool can be used to stop the containers, just if you need to stop the blockchain network for any reason. In a similar manner as done before, use the following command to stop all the containers:
