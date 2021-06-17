@@ -268,7 +268,7 @@ And then simultaneously run the script that capture the client CPU and MEM consu
 ./mem_cpu.sh
 ```
 
-Thereon you can send the AIS data through blockchain transactions and compare each performance to evaluate the blockchain overhead. Don't forget that you need to run all the containers, create the channel among the peers and install/instantiate the chaincode as explained in the previous topics. 
+Thereon you can send the AIS data through blockchain transactions and compare each performance to evaluate the blockchain overhead. Don't forget that you need to run all the containers, create the channel among the peers and install/instantiate the chaincode in the server and prepare your client application as explained in the previous topics. 
 
 Then you need to invoke the python client function sendMessage.py to start sending each NMEA string as a transaction to the blockchain server:
 
