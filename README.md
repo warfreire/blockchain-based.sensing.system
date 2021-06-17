@@ -101,13 +101,13 @@ docker-compose -f peer-orderer.yaml -f peer-1dn.yaml up -d
 The same tool can be used to stop the containers, just if you need to stop the blockchain network for any reason. In a similar manner as done before, use the following command to stop all the containers:
 
 ```console
-docker-compose -f peer-ptb.yaml stop
+docker-compose -f peer-1dn.yaml stop
 ```
 
 If you need to reset and restart a complete new set of peers, use the provided script [teardown.sh](teardown.sh), informing the same .yaml file used to start the containers before, for instance:
 
 ```console
-./teardown.sh peer-ptb.yaml
+./teardown.sh peer-1dn.yaml
 ```
 
 ### 4. Create the Fabric channel and join the peers
