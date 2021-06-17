@@ -221,7 +221,7 @@ The Python SDK applications depend on a **network profile** encoded in JSON form
 * Modify the .json file with the correct name and path of each required file;
 * Also, verify the explicit IP addresses related to the known orderer and entry peer. They must reflect your network configuration.
 
-### The Client Application modules
+### The Client Application module
 
 The Client Application includes the following module:
 
