@@ -225,7 +225,7 @@ The Python SDK applications depend on a **network profile** encoded in JSON form
 
 The Client Application includes the following module:
 
-* [sendMessage.py](fabpki-cli/keygen-ecdsa.py): It is  Python script that receive and process the AIS data received on NMEA format. This format is a standardization National Marine Electronics Association used in GPS, AIS, VTS and other maritime services.
+* [sendMessage.py](fabpki-cli/keygen-ecdsa.py): It is a Python script that receive and process the AIS data received on NMEA format. This format is a standardization National Marine Electronics Association used in GPS, AIS, VTS and other maritime services.
 
 
 ## Monitoring local ledger copies with Fauxton and Mango
