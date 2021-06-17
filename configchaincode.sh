@@ -1,5 +1,5 @@
 ##########################################################################
-# INTER-MB BLOCKCHAIN NETWORK EXPERIMENT - CHAINCODE CONFIG - March/2021
+# BLOCKCHAIN MMS EXPERIMENT - CHAINCODE CONFIG - March/2021
 # This script requires a pre configured docker environment, with the 
 # peers and orderer associated with the respective org already started 
 # and the respective channel configured.
