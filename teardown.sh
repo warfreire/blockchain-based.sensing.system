@@ -1,5 +1,5 @@
 ##########################################################################
-# INTER-NMI BLOCKCHAIN NETWORK EXPERIMENT - TEARDOWN - July/2020
+# BLOCKCHAIN MMS EXPERIMENT - TEARDOWN - July/2021
 # This script kills all the active docker containers and removes temp
 # docker images, releasing disk space and letting the environment ready
 # for a fresh restart. 
