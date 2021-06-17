@@ -1,10 +1,8 @@
 ##########################################################################
-# INTER-MB BLOCKCHAIN NETWORK EXPERIMENT - PEER BASE - March/2021
+# BLOCKCHAIN MMS EXPERIMENT - PEER BASE - March/2021
 # This docker config profile defines peer base configuration. It should be
-# extended by the main docker-compose config in the files:
+# extended by the main docker-compose config in the file:
 # - peer-1dn.yaml
-# - peer-2dn.yaml
-# - <any future NMI added to the project>
 # Author: Wilson S. Melo Jr. - Inmetro
 ##########################################################################
 
