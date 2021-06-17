@@ -252,7 +252,7 @@ CouchDB web interface also integrates the **Mango** tool for querying data. You 
 }
 ```
 
-## Perfomance Analyzing
+## Perfomance Analysis
 
 To analyze the feasibility of the Blockchain-based MMS, we evaluate the performance of the system. First we compare the client CPU and MEM consumption sending the AIS data to the server through SSH and then through blockchain transactions. We chose SSH protocol because, like blockchain mechanisms, it also employs symmetric and asymmetric cryptography.
 
