@@ -43,7 +43,7 @@ All the configuration files related to the blockchain network are in the base fo
 * [configtx.yaml](configtx.yaml): basic network profile of Inter-NMI blockchain network.
 * [crypto-config-mb.yaml](crypto-config-nmi.yaml): (Membership Service Provider) configuration. We generate all the digital certificates from it.
 * [peer-ordererer.yaml](peer-orderer.yaml): contains the orderer docker container configuration for the Orderer organization.
-* [peer-1dn.yaml](peer-1dn.yaml): contains the docker containers configuration for the PTB peers. It extends the file [peer-base.yaml](peer-base.yaml), which constitutes a template of standard configuration items.
+* [peer-1dn.yaml](peer-1dn.yaml): contains the docker containers configuration for the 1DN peers. It extends the file [peer-base.yaml](peer-base.yaml), which constitutes a template of standard configuration items.
 * [.env](.env): this file works as a source for environment variables in the docker configuration. So we use it to transcribe the IP addresses of each peer.
 
 If you are not used to the Hyperledger Fabric, we strongly recommend this [tutorial](https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html). It teaches in detail how to create a basic Fabric network.
@@ -78,7 +78,7 @@ After, execute the script:
 ./configmsp.sh
 ```
 
-This script uses [crypto-config-mb.yaml](crypto-config-mb.yaml) to create the MSP certificates in the folder **crypto-config**. It also uses [configtx.yaml](configtx.yaml) and generates the genesis block file *nmi-genesis.block*, the channel configuration file *nmi-channel.tx*, and the anchor peers transaction files *ptb.de-anchors.tx* and *inmetro.br-anchors.tx*. Notice that this script depends on the tools installed together with Fabric. The script *installFabric.sh* executed previously is expected to modify your $PATH variable and enable the Fabric tools' direct execution. If this does not happen, try to fix the $PATH manually. The tools usually are in the folder /$HOME/fabric-samples/bin.
+This script uses [crypto-config-mb.yaml](crypto-config-mb.yaml) to create the MSP certificates in the folder **crypto-config**. It also uses [configtx.yaml](configtx.yaml) and generates the genesis block file *nmi-genesis.block*, the channel configuration file *nmi-channel.tx*, and the anchor peers transaction files *1dn.mb-anchors.tx*. Notice that this script depends on the tools installed together with Fabric. The script *installFabric.sh* executed previously is expected to modify your $PATH variable and enable the Fabric tools' direct execution. If this does not happen, try to fix the $PATH manually. The tools usually are in the folder /$HOME/fabric-samples/bin.
 
 ### 3. Manage the docker containers
 
@@ -213,7 +213,7 @@ sudo make install
 ```
 
 ### Configure the JSON network profile
-The Python SDK applications depend on a **network profile** encoded in JSON format. Since we have two independent organizations, the network profile changes accordingly to them. In this repository, we provide the files [ptb.de.json](fabpki-cli/ptb.de.json) and [inmetro.br.json](fabpki-cli/inmetro.br.json). The network profile keeps the necessary credentials to access the blockchain network. You must configure this file properly every time that you create new digital certificates in the MSP:
+The Python SDK applications depend on a **network profile** encoded in JSON format. Since we have two independent organizations, the network profile changes accordingly to them. In this repository, we provide the files [1dn.mb.json](fabpki-cli/1dn.mb.json) and [inmetro.br.json](fabpki-cli/inmetro.br.json). The network profile keeps the necessary credentials to access the blockchain network. You must configure this file properly every time that you create new digital certificates in the MSP:
 
 * Open the respective .json in a text editor;
 * Check for the entries called "tlsCACerts", "clientKey", "clientCert", "cert" and "private_key" on each organization. Notice that they point out to different files into the (./cripto-config) directory that corresponds to digital certificates and keys of each organization. The private key must correspond to the user who will submit the transactions (by default, we use Admin);
@@ -230,13 +230,13 @@ The Client Application includes the following module:
 
 ## Monitoring local ledger copies with Fauxton and Mango
 
-One of the advantages of using CouchDB is its database management system (DBMS) graphical interface. One can access the [Fauxton](https://couchdb.apache.org/fauxton-visual-guide/index.html#using-fauxton) project's web interface instance on each CouchDB container. First, observe in the docker containers list the active CouchDB containers (for example, in the ptb.de domain, they should be ptbdb0 and ptbdb1):
+One of the advantages of using CouchDB is its database management system (DBMS) graphical interface. One can access the [Fauxton](https://couchdb.apache.org/fauxton-visual-guide/index.html#using-fauxton) project's web interface instance on each CouchDB container. First, observe in the docker containers list the active CouchDB containers (for example, in the 1dn.mb domain, they should be 1dndb0 and 1dndb1):
 
 ```console
 docker ps | grep couchdb
 ```
 
-In the returned containers list, notice the respective ports where each container is listening to for connections. For instance, the default configuration sets ptbdb0 and ptbdb1 in ports 5984 and 6984, respectively. Now, by assuming you have an Internet browser in your blockchain host, you can access the ptbdb0's Fauxton interface in the following URL: http://localhost:5984/_utils. Observe that you need to change this URL according to your own configuration (i.e., replace localhost with the respective IP and the port number with your own configuration port).
+In the returned containers list, notice the respective ports where each container is listening to for connections. For instance, the default configuration sets 1dndb0 and 1dndb1 in ports 5984 and 6984, respectively. Now, by assuming you have an Internet browser in your blockchain host, you can access the ptbdb0's Fauxton interface in the following URL: http://localhost:5984/_utils. Observe that you need to change this URL according to your own configuration (i.e., replace localhost with the respective IP and the port number with your own configuration port).
 
 Once you have the CouchDB web interface opened, access the chaincode *fabpki* records link by clicking on the **nmi-channel_fabpki** option. You will be able to consult all the digital assets associated with this chaincode.
 
