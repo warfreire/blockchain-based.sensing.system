@@ -1,5 +1,5 @@
 ##########################################################################
-# INTER-NMI BLOCKCHAIN NETWORK EXPERIMENT - CHANNEL CONFIG - July/2020
+# BLOCKCHAIN MMS EXPERIMENT - CHANNEL CONFIG - July/2020
 # This script requires a pre configured docker environment, with the 
 # peers and orderer associated with the respective org already started.
 # It uses peer0 for creating a channel (when requested) and joins peer0 
