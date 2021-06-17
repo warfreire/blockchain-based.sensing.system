@@ -5,7 +5,7 @@
     receives the meter ID and its respective public key.
     This module must be called before any query against the ledger.
         
-    :copyright: © 2020 by Wilson Melo Jr.
+    :copyright: © 2021 by Warlley Paulo Freire.
 """
 
 import sys
