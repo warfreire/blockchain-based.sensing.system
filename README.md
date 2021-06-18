@@ -1,6 +1,6 @@
 # Blockchain-based Maritime Monitoring System (MMS): An experimental blockchain prototype to protect critical maritime sensing data 
 
-This repository contains the implementation of **The Blockchain-based MMS**, developed in cooperation between the Admiral Wandenkolk Instruction Center (CIAW), the National Institute of Metrology, Quality, and Technology (Inmetro), and Presbiterian Catholic University (PUC-RJ).
+This repository contains the implementation of **The Blockchain-based MMS**, developed in cooperation between the Admiral Wandenkolk Instruction Center (CIAW), the National Institute of Metrology, Quality, and Technology (Inmetro), and Pontifical Catholic University (PUC-RJ).
 
 Research team:
 * *[Warlley Paulo Freire](https://www.researchgate.net/profile/Wilson-Melo-Junior) (paulo.freire@marinha.mil.br / warlleyfreire@gmail.com)*
