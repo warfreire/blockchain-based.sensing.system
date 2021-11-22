@@ -1,6 +1,6 @@
 {
   "name":"mbblocknet_default",
-  "description":"Connection profile to access the nmiblocknet from the PTB org",
+  "description":"Connection profile to access the blockchain from the 1DN org",
   "version":"0.1",
   "client":{
     "organization":"1DN",
@@ -35,8 +35,8 @@
       ],
       "users": {
         "Admin": {
-          "cert": "./crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/signcerts/Admin@orderer.mb-cert.pem",
-          "private_key": "./crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/keystore/a08987965ca7d893e9fa39c0d92e77d122bb3e43c1bbaf5c591a72929ac4e1a2_sk"}
+          "cert": "../crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/signcerts/Admin@orderer.mb-cert.pem",
+          "private_key": "../crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/keystore/a08987965ca7d893e9fa39c0d92e77d122bb3e43c1bbaf5c591a72929ac4e1a2_sk"}
       }
     },
     "1dn.mb":{
@@ -47,46 +47,46 @@
       ],
       "users": {
         "Admin": {
-          "cert": "./crypto-config/peerOrganizations/1dn.mb/users/Admin@ptb.de/msp/signcerts/Admin@ptb.de-cert.pem",
-          "private_key": "/home/warlley/mbblocknet/crypto-config/peerOrganizations/1dn.mb/users/Admin@ptb.de/msp/keystore/6aaeeec3381d86d9b202e3bb1e869b0b624aecc75a0a0460071c00a5127603ea_sk"
+          "cert": "../crypto-config/peerOrganizations/1dn.mb/users/Admin@1dn.mb/msp/signcerts/Admin@1dn.mb-cert.pem",
+          "private_key": "../crypto-config/peerOrganizations/1dn.mb/users/Admin@1dn.mb/msp/keystore/6aaeeec3381d86d9b202e3bb1e869b0b624aecc75a0a0460071c00a5127603ea_sk"
         }
       }
     }
   },
   "orderers":{
     "orderer.mb":{
-      "url":"10.0.2.15:7050",
+      "url":"172.20.10.11:7050",
       "grpcOptions": {
         "grpc.ssl_target_name_override": "orderer.mb",
         "grpc-max-send-message-length": 15
       },
       "tlsCACerts": {
-        "path": "./crypto-config/ordererOrganizations/orderer.mb/tlsca/tlsca.orderer.mb-cert.pem"
+        "path": "../crypto-config/ordererOrganizations/orderer.mb/tlsca/tlsca.orderer.mb-cert.pem"
       },
       "clientKey": {
-        "path": "./crypto-config/ordererOrganizations/orderer.nmi/orderers/orderer.nmi.orderer.nmi/tls/server.key"
+        "path": "../crypto-config/ordererOrganizations/orderer.mb/orderers/orderer.mb.orderer.mb/tls/server.key"
       },
       "clientCert": {
-        "path": "./crypto-config/ordererOrganizations/orderer.nmi/orderers/orderer.mb.orderer.mb/tls/server.crt"
+        "path": "../crypto-config/ordererOrganizations/orderer.mb/orderers/orderer.mb.orderer.mb/tls/server.crt"
       }
     }
   },
   "peers":{
     "peer0.1dn.mb":{
-      "url":"10.0.2.15:7051",
-      "eventUrl":"10.0.2.15:7053",
+      "url":"172.20.10.11:7051",
+      "eventUrl":"172.20.10.11:7053",
       "grpcOptions": {
         "grpc.ssl_target_name_override": "peer0.1dn.mb",
         "grpc-max-send-message-length": 15
       },
       "tlsCACerts": {
-        "path": "./crypto-config/peerOrganizations/1dn.mb/tlsca/tlsca.1dn.mb-cert.pem"
+        "path": "../crypto-config/peerOrganizations/1dn.mb/tlsca/tlsca.1dn.mb-cert.pem"
       },
       "clientKey": {
-        "path": "./crypto-config/peerOrganizations/1dn.mb/peers/peer0.1dn.mb/tls/server.key"
+        "path": "../crypto-config/peerOrganizations/1dn.mb/peers/peer0.1dn.mb/tls/server.key"
       },
       "clientCert": {
-        "path": "./crypto-config/peerOrganizations/1dn.mb/peers/peer0.1dn.mb/tls/server.crt"
+        "path": "../crypto-config/peerOrganizations/1dn.mb/peers/peer0.1dn.mb/tls/server.crt"
       }
     }
   },

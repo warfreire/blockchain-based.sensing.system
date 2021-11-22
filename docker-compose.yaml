@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+  client-mdpi:
+    container_name: client-mdpi
+    image: client-mdpi:1.0.0
+    build: .
+    volumes:
+#      - /Users/warlleyfreire/Documents/Blockchain/MDPI/blockchain-based.sensing.system-build-dockerfile:/usr/src/app
+      - ./:/usr/src/app
+
+

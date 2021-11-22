@@ -9,9 +9,8 @@ WORKDIR $HOME/fabric-sdk-py
 RUN git checkout tags/v0.8.0
 RUN make install
 
-WORKDIR /usr/src/app
-COPY . .
 
-CMD ["python", "./fabpki-cli/message-ecdsa.py", "1", "teste", "2"]
+WORKDIR /usr/src/app/fabpki-cli
+CMD ["python3", "message-ecdsa.py"]
 
 
