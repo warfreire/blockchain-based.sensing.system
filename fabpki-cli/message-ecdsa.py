@@ -82,17 +82,10 @@ if __name__ == "__main__":
     
     for l in linhas:
         now = datetime.datetime.now()
-        data = now.strftime("%Y-%m-%d_%H:%M")
-        arquivo_log = ( data + ' - ' + estacao + "\n" )
-
-     #   ais_message = NMEAMessage.from_string( l )
-     #   message = ais_message.decode().content
-       
-        # adiciona data
-        #message["date"]=datetime.datetime.utcnow().strftime("%Y%m%d-%k%M")
-        #print(arquivo_log)
-        #print( str(message))
-       
+        data = now.strftime("%Y-%m-%d_%H:%M:%S.%fZ")
+        arquivo_log = ( data + ' - ' + estacao )       
+        print(arquivo_log)
+        print( str(l))
         response = loop.run_until_complete(c_hlf.chaincode_invoke(
             requestor=admin, 
             channel_name=channel_name, 
@@ -100,7 +93,7 @@ if __name__ == "__main__":
             cc_name=cc_name, 
             cc_version=cc_version,
             fcn='sendMessage', 
-            args=[arquivo_log, l], 
+            args=[arquivo_log,l], 
             cc_pattern=None))
 
    #   # le socket do receptor AIS

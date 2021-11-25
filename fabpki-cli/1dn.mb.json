@@ -36,7 +36,7 @@
       "users": {
         "Admin": {
           "cert": "../crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/signcerts/Admin@orderer.mb-cert.pem",
-          "private_key": "../crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/keystore/a08987965ca7d893e9fa39c0d92e77d122bb3e43c1bbaf5c591a72929ac4e1a2_sk"}
+          "private_key": "../crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/keystore/faf6325dbcb7029fa836126b3cbedb000a3cfeca730a17e60a7a47574f40b648_sk"}
       }
     },
     "1dn.mb":{
@@ -48,14 +48,14 @@
       "users": {
         "Admin": {
           "cert": "../crypto-config/peerOrganizations/1dn.mb/users/Admin@1dn.mb/msp/signcerts/Admin@1dn.mb-cert.pem",
-          "private_key": "../crypto-config/peerOrganizations/1dn.mb/users/Admin@1dn.mb/msp/keystore/6aaeeec3381d86d9b202e3bb1e869b0b624aecc75a0a0460071c00a5127603ea_sk"
+          "private_key": "../crypto-config/peerOrganizations/1dn.mb/users/Admin@1dn.mb/msp/keystore/5db72b2015fb80cc244a3fb7d1bc71fc6b60c83321b6b86d20fe077d6b7affdc_sk"
         }
       }
     }
   },
   "orderers":{
     "orderer.mb":{
-      "url":"172.20.10.11:7050",
+      "url":"192.168.0.12:7050",
       "grpcOptions": {
         "grpc.ssl_target_name_override": "orderer.mb",
         "grpc-max-send-message-length": 15
@@ -73,8 +73,8 @@
   },
   "peers":{
     "peer0.1dn.mb":{
-      "url":"172.20.10.11:7051",
-      "eventUrl":"172.20.10.11:7053",
+      "url":"192.168.0.12:7051",
+      "eventUrl":"192.168.0.12:7053",
       "grpcOptions": {
         "grpc.ssl_target_name_override": "peer0.1dn.mb",
         "grpc-max-send-message-length": 15
