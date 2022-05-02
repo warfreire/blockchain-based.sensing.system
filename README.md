@@ -15,7 +15,7 @@ Research team:
 
 ## What the experiment is:
 
-This experiment was designed to evaluate the feasibility of a permissioned blockchain tailored to secure critical sensing data on a Maritime Monitoring System. To do so, we integrate the blockchain prototype with a low-cost Automatic Identification System (AIS) developed by the Brazilian Navy, and analyzed the overall perfomance of the system  receiving marine traffic data on a real environment.  
+This experiment was designed to evaluate the feasibility of a permissioned blockchain tailored to secure critical sensing data on a Maritime Monitoring System. To do so, we integrate the blockchain prototype with a low-cost Automatic Identification System (AIS) developed by the Brazilian Navy, and analyzed the overall perfomance of the system  receiving marine traffic data on a real environment. In this 2.1 version, we seek to adress scalability in a MMS, setting a Raft Consensus protocol and introducing a dockerized blockchain-client.   
 
 
 We adopt [Hyperledger Fabric 1.4 LTS](https://hyperledger-fabric.readthedocs.io/en/release-1.4/) as our blockchain platform. We configure a globally distributed blockchain network that supports the execution of Golang chaincodes.
@@ -36,7 +36,7 @@ We also invite the reader to check out our previous publications related to this
 
 ## The customized blockchain network
 
-We provide a flexible Fabric blockchain network configuration, initially with three organizations. The first one is the **Orderer** organization, which encapsulates the blockchain network orderer service. So far, we are using the *solo orderer* provided for Fabric. However, we intend to replace it with a complete consensus service as soon as possible. The second and third organizations are **1DN** (1st Naval District) and **2DN** (2nd Naval District) capable of receiving the AIS data of the sensing nodes and store it on blockchain's Ledger. 
+We provide a flexible Fabric blockchain network configuration, initially with three organizations. The first one is the **Orderer** organization, which encapsulates the blockchain network orderer service. Each and all orderer peers in the network reach consensus through the Raft Consensus protocol, adding fault tolerance mechanisms to the prototype(resilient even with 50% compromised peers). The second and third organizations are **1DN** (1st Naval District) and **2DN** (2nd Naval District) capable of receiving the AIS data of the sensing nodes and storing it on blockchain's Ledger. 
 
 . In our configuration, each organization provides two peers (peer0 and peer1). The configuration also considers that peer0 in both organizations are endorser peers, and peer1 are only committer peers. However, the configuration is flexible, and the network administrator in each organization can easily change it to include more peers and also to change peers' roles. We also use [Couchdb](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_tutorial.html) containers to improve the performance of storing the ledger state on each peer.
 
