@@ -1,6 +1,6 @@
 # Blockchain-based Maritime Monitoring System (MMS): An experimental blockchain prototype to protect critical maritime sensing data 
 
-[This is the Blockchain-based MMS V 2.1 prototype. The v 2.0 prototype relative to IEEE MetroSea paper is [here][https://github.com/warfreire/blockchain-based.sensing.system/tree/2.0].] 
+[This is the Blockchain-based MMS V 2.1 prototype. The v 2.0 prototype relative to IEEE MetroSea paper is [here](https://github.com/warfreire/blockchain-based.sensing.system/tree/2.0).] 
 
 This repository contains the implementation of a **Blockchain-based MMS**, developed in cooperation between the Admiral Wandenkolk Instruction Center (CIAW), the National Institute of Metrology, Quality, and Technology (Inmetro), and Pontifical Catholic University (PUC-RJ).
 
