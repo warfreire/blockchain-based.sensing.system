@@ -5,11 +5,11 @@
 This repository contains the implementation of a **Blockchain-based MMS**, developed in cooperation between the Admiral Wandenkolk Instruction Center (CIAW), the National Institute of Metrology, Quality, and Technology (Inmetro), and Pontifical Catholic University (PUC-RJ).
 
 Research team:
-* *[Warlley Paulo Freire](https://www.researchgate.net/profile/Wilson-Melo-Junior) (paulo.freire@marinha.mil.br / warlleyfreire@gmail.com)*
+* *[Warlley Paulo Freire](https://ieeexplore.ieee.org/abstract/document/9611587) (paulo.freire@marinha.mil.br / warlleyfreire@gmail.com)*
 * *[Wilson S. Melo Jr.](https://www.researchgate.net/profile/Wilson-Melo-Junior) (wsjunior@inmetro.gov.br)*
-* *[Alan Oliveira de Sá](https://www.researchgate.net/profile/Wilson-Melo-Junior) (alan.oliveira.sa@gmail.com)*
+* *[Paulo R. M. Nascimento](https://github.com/paulormnasr) (prnascimento@inmetro.gov.br)*
 * *[Vinicius Dalto do Nascimento](https://www.researchgate.net/profile/Wilson-Melo-Junior) (dalto@cos.ufrj.br)*
-
+* *[Alan Oliveira de Sá](https://www.researchgate.net/profile/Wilson-Melo-Junior) (alan.oliveira.sa@gmail.com)*
 
 *Revised on June 10th, 2021.*
 
