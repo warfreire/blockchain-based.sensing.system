@@ -24,7 +24,7 @@ We describe in the next sections the main aspects related to the  blockchain net
 
 We also invite the reader to check out our previous publications related to this project. They are listed below:
 
-* [Freire, W., Melo, W., Nascimento, V., Sá, A. (2021). Blockchain-based Maritime Monitoring System](www.researchgate.com/warfreire/blockchain-basedmms)
+* [Freire, W., Melo, W., Nascimento, V., Sá, A. (2021). Blockchain-based Maritime Monitoring System](https://ieeexplore.ieee.org/abstract/document/9611587)
 
 * [Moni, M., Melo, W., Peters, D., & Machado, R. (2021). When Measurements Meet Blockchain: On Behalf of an Inter-NMI Network. Sensors, 21(5), 1564.](https://doi.org/10.3390/s21051564)
 
