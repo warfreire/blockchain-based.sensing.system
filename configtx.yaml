@@ -86,7 +86,7 @@ Orderer: &OrdererDefaults
 
     # Orderer Type: The orderer implementation to start
     # Available types are "solo" and "kafka"
-    OrdererType: solo
+    OrdererType: kafka
 
     Addresses:
         - orderer.mb:7050
@@ -115,6 +115,26 @@ Orderer: &OrdererDefaults
         # Brokers:
         #     - 127.0.0.1:9092
 
+    # EtcdRaft defines configuration which must be set when the "etcdraft"
+    # orderertype is chosen.
+    EtcdRaft:
+        # The set of Raft replicas for this network. For the etcd/raft-based
+        # implementation, we expect every replica to also be an OSN. Therefore,
+        # a subset of the host:port items enumerated in this list should be
+        # replicated under the Orderer.Addresses key above.
+        Consenters:
+            - Host: raft1.orderer.mb
+              Port: 7050
+              ClientTLSCert: crypto-config/ordererOrganizations/orderer.mb/orderers/raft1.orderer.mb/tls/server.crt
+              ServerTLSCert: crypto-config/ordererOrganizations/orderer.mb/orderers/raft1.orderer.mb/tls/server.crt
+            - Host: raft2.orderer.mb
+              Port: 7050
+              ClientTLSCert: crypto-config/ordererOrganizations/orderer.mb/orderers/raft2.orderer.mb/tls/server.crt
+              ServerTLSCert: crypto-config/ordererOrganizations/orderer.mb/orderers/raft2.orderer.mb/tls/server.crt
+            - Host: raft3.orderer.mb
+              Port: 7050
+              ClientTLSCert: crypto-config/ordererOrganizations/orderer.mb/orderers/raft3.orderer.mb/tls/server.crt
+              ServerTLSCert: crypto-config/ordererOrganizations/orderer.mb/orderers/raft3.orderer.mb/tls/server.crt
     # Organizations is the list of orgs which are defined as participants on
     # the orderer side of the network
     Organizations:
@@ -152,6 +172,36 @@ Profiles:
                 Organizations:
                     - *1DN
                     - *2DN
+    MBRaftGenesis:
+        Orderer:
+            <<: *OrdererDefaults
+            OrdererType: etcdraft
+            EtcdRaft:
+                Consenters:
+                - Host: raft1.orderer.mb
+                  Port: 7050
+                  ClientTLSCert: crypto-config/ordererOrganizations/orderer.mb/orderers/raft1.orderer.mb/tls/server.crt
+                  ServerTLSCert: crypto-config/ordererOrganizations/orderer.mb/orderers/raft1.orderer.mb/tls/server.crt
+                - Host: raft2.orderer.mb
+                  Port: 7050
+                  ClientTLSCert: crypto-config/ordererOrganizations/orderer.mb/orderers/raft2.orderer.mb/tls/server.crt
+                  ServerTLSCert: crypto-config/ordererOrganizations/orderer.mb/orderers/raft2.orderer.mb/tls/server.crt
+                - Host: raft3.orderer.mb
+                  Port: 7050
+                  ClientTLSCert: crypto-config/ordererOrganizations/orderer.mb/orderers/raft3.orderer.mb/tls/server.crt
+                  ServerTLSCert: crypto-config/ordererOrganizations/orderer.mb/orderers/raft3.orderer.mb/tls/server.crt
+            Addresses:
+                - raft1.orderer.mb:7050
+                - raft2.orderer.mb:7050
+                - raft3.orderer.mb:7050	    
+            Organizations:
+                - *Orderer
+        Consortiums:
+            MBConsortium:
+                Organizations:
+                    - *1DN
+                    - *2DN
+
     MBChannel:
         Consortium: MBConsortium
         Application:

@@ -17,30 +17,31 @@ services:
   # Here we configre a solo orderer service. If you have a BFT orderer, you can just 
   # discard this service. The assign of protocol ports requires special attention here. 
   # Also, check the block genesis name
-  orderer.mb:
-    container_name: orderer.mb
+  raft1.orderer.mb:
+    extends:
+      file: peer-base.yaml
+      service: orderer-base
+    container_name: raft1.orderer.mb
     image: hyperledger/fabric-orderer
     environment:
-      - ORDERER_GENERAL_LOGLEVEL=debug
-      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
-      - ORDERER_GENERAL_GENESISMETHOD=file
       # The block genesis name goes here. Change it if necessary
       - ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/configtx/mb-genesis.block
-      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
       - ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/msp
       # Here we do the TLS config. Remember of defining /etc/hypereledger/tls volume correctly.
       - ORDERER_GENERAL_TLS_ENABLED=true
       - ORDERER_GENERAL_TLS_PRIVATEKEY=/etc/hyperledger/tls/server.key
       - ORDERER_GENERAL_TLS_CERTIFICATE=/etc/hyperledger/tls/server.crt
       - ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/tls/ca.crt]
-    working_dir: /opt/gopath/src/github.com/hyperledger/fabric
-    command: orderer
+      # Cluster config: the keys are the same of the ones in TLS
+      - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/etc/hyperledger/tls/server.key
+      - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/etc/hyperledger/tls/server.crt
+      - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/etc/hyperledger/tls/ca.crt]
     ports:
       - 7050:7050
     volumes:
       - ./:/etc/hyperledger/configtx
-      - ./crypto-config/ordererOrganizations/orderer.mb/orderers/orderer.mb.orderer.mb/msp:/etc/hyperledger/msp
-      - ./crypto-config/ordererOrganizations/orderer.mb/orderers/orderer.mb.orderer.mb/tls:/etc/hyperledger/tls
+      - ./crypto-config/ordererOrganizations/orderer.mb/orderers/raft1.orderer.mb/msp:/etc/hyperledger/msp
+      - ./crypto-config/ordererOrganizations/orderer.mb/orderers/raft1.orderer.mb/tls:/etc/hyperledger/tls
     # The section extra_hosts resolve the domain names for a multi host deploy.
     # You MUST to inform the IP addresses for each peer outside of your network.
     # You also CAN define the vars in the .env file (more practical, since you define
@@ -51,3 +52,76 @@ services:
       - "peer1.1dn.mb:${PTB_IP_1}"
       - "peer0.2dn.mb:${INMETRO_IP_1}"
       - "peer1.2dn.mb:${INMETRO_IP_1}"
+
+  raft2.orderer.mb:
+    extends:
+      file: peer-base.yaml
+      service: orderer-base
+    container_name: raft2.orderer.mb
+    image: hyperledger/fabric-orderer
+    environment:
+      # The block genesis name goes here. Change it if necessary
+      - ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/configtx/mb-genesis.block
+      - ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/msp
+      # Here we do the TLS config. Remember of defining /etc/hypereledger/tls volume correctly.
+      - ORDERER_GENERAL_TLS_ENABLED=true
+      - ORDERER_GENERAL_TLS_PRIVATEKEY=/etc/hyperledger/tls/server.key
+      - ORDERER_GENERAL_TLS_CERTIFICATE=/etc/hyperledger/tls/server.crt
+      - ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/tls/ca.crt]
+      # Cluster config: the keys are the same of the ones in TLS
+      - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/etc/hyperledger/tls/server.key
+      - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/etc/hyperledger/tls/server.crt
+      - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/etc/hyperledger/tls/ca.crt]
+    ports:
+      - 8050:7050
+    volumes:
+      - ./:/etc/hyperledger/configtx
+      - ./crypto-config/ordererOrganizations/orderer.mb/orderers/raft2.orderer.mb/msp:/etc/hyperledger/msp
+      - ./crypto-config/ordererOrganizations/orderer.mb/orderers/raft2.orderer.mb/tls:/etc/hyperledger/tls
+    # The section extra_hosts resolve the domain names for a multi host deploy.
+    # You MUST to inform the IP addresses for each peer outside of your network.
+    # You also CAN define the vars in the .env file (more practical, since you define
+    # in one place alone.)
+    extra_hosts:
+      #- "orderer.mb:${ORDERER_IP}"
+      - "peer0.1dn.mb:${PTB_IP_1}"
+      - "peer1.1dn.mb:${PTB_IP_1}"
+      - "peer0.2dn.mb:${INMETRO_IP_1}"
+      - "peer1.2dn.mb:${INMETRO_IP_1}"
+
+  raft3.orderer.mb:
+    extends:
+      file: peer-base.yaml
+      service: orderer-base
+    container_name: raft3.orderer.mb
+    image: hyperledger/fabric-orderer
+    environment:
+      # The block genesis name goes here. Change it if necessary
+      - ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/configtx/mb-genesis.block
+      - ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/msp
+      # Here we do the TLS config. Remember of defining /etc/hypereledger/tls volume correctly.
+      - ORDERER_GENERAL_TLS_ENABLED=true
+      - ORDERER_GENERAL_TLS_PRIVATEKEY=/etc/hyperledger/tls/server.key
+      - ORDERER_GENERAL_TLS_CERTIFICATE=/etc/hyperledger/tls/server.crt
+      - ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/tls/ca.crt]
+      # Cluster config: the keys are the same of the ones in TLS
+      - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/etc/hyperledger/tls/server.key
+      - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/etc/hyperledger/tls/server.crt
+      - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/etc/hyperledger/tls/ca.crt]
+    ports:
+      - 9050:7050
+    volumes:
+      - ./:/etc/hyperledger/configtx
+      - ./crypto-config/ordererOrganizations/orderer.mb/orderers/raft3.orderer.mb/msp:/etc/hyperledger/msp
+      - ./crypto-config/ordererOrganizations/orderer.mb/orderers/raft3.orderer.mb/tls:/etc/hyperledger/tls
+    # The section extra_hosts resolve the domain names for a multi host deploy.
+    # You MUST to inform the IP addresses for each peer outside of your network.
+    # You also CAN define the vars in the .env file (more practical, since you define
+    # in one place alone.)
+    extra_hosts:
+      #- "orderer.mb:${ORDERER_IP}"
+      - "peer0.1dn.mb:${PTB_IP_1}"
+      - "peer1.1dn.mb:${PTB_IP_1}"
+      - "peer0.2dn.mb:${INMETRO_IP_1}"
+      - "peer1.2dn.mb:${INMETRO_IP_1}"
+

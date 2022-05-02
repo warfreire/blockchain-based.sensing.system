@@ -11,7 +11,7 @@
 
 # Remember to configure these auxiliar vars. They must reflect any name change
 # when necessary.
-ORDERER=orderer.mb:7050
+ORDERER=raft1.orderer.mb:7050
 CHANNEL=mb-channel
 MSPCONFIGPATH=/etc/hyperledger/admsp
 CAFILE=/etc/hyperledger/tlscacerts/tlsca.orderer.mb-cert.pem
@@ -44,7 +44,7 @@ if [ -z "$2" ]
         echo "---> FETCH CHANNEL with "$ACTPEER"."$DOMAIN
         docker exec -e CORE_PEER_MSPCONFIGPATH=$MSPCONFIGPATH $ACTPEER.$DOMAIN peer channel fetch 0 ${CHANNEL}_0.block  -o $ORDERER -c $CHANNEL --tls --cafile $CAFILE
         echo "---> JOIN CHANNEL with "$ACTPEER"."$DOMAIN
-        docker exec -e CORE_PEER_MSPCONFIGPATH=$MSPCONFIGPATH $ACTPEER.$DOMAIN peer channel join -b ${CHANNEL}_0.block
+        docker exec -e CORE_PEER_MSPCONFIGPATH=$MSPCONFIGPATH $ACTPEER.$DOMAIN peer channel join -b ${CHANNEL}_0.block --tls --cafile $CAFILE
 
         #we need update anchors peers immediatly after creating the channel, and before to join other peers.
         echo "---> UPDATE CHANNEL with $DOMAIN anchors"
@@ -56,7 +56,7 @@ if [ -z "$2" ]
             echo "---> CREATE CHANNEL with "$ACTPEER"."$DOMAIN
             docker exec $ACTPEER.$DOMAIN peer channel create -o $ORDERER -c $CHANNEL -f /etc/hyperledger/configtx/$CHANNEL.tx --tls --cafile $CAFILE
             echo "---> JOIN CHANNEL with "$ACTPEER"."$DOMAIN
-            docker exec -e CORE_PEER_MSPCONFIGPATH=$MSPCONFIGPATH $ACTPEER.$DOMAIN peer channel join -b ${CHANNEL}.block
+            docker exec -e CORE_PEER_MSPCONFIGPATH=$MSPCONFIGPATH $ACTPEER.$DOMAIN peer channel join -b ${CHANNEL}.block --tls --cafile $CAFILE
 
             #we need update anchors peers immediatly after creating the channel, and before to join other peers.
             echo "---> UPDATE CHANNEL with $DOMAIN anchors"

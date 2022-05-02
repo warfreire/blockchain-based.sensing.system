@@ -15,7 +15,9 @@
   "channels": {
     "1dn-channel": {
         "orderers": [
-            "orderer.mb"
+            "raft1.orderer.mb",
+            "raft2.orderer.mb",
+            "raft3.orderer.mb"
         ],
         "peers": {
             "peer0.1dn.mb": {
@@ -31,12 +33,14 @@
     "orderer.mb":{
       "mspid": "OrdererMSP",
       "orderers": [
-        "orderer.mb"
+        "raft1.orderer.mb",
+        "raft2.orderer.mb",
+        "raft3.orderer.mb"
       ],
       "users": {
         "Admin": {
           "cert": "../crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/signcerts/Admin@orderer.mb-cert.pem",
-          "private_key": "../crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/keystore/faf6325dbcb7029fa836126b3cbedb000a3cfeca730a17e60a7a47574f40b648_sk"}
+          "private_key": "../crypto-config/ordererOrganizations/orderer.mb/users/Admin@orderer.mb/msp/keystore/7eac2191603c01677275b7cc6329e42ab2b0c92a96d20af324f26e1d9687f8b8_sk"}
       }
     },
     "1dn.mb":{
@@ -48,33 +52,65 @@
       "users": {
         "Admin": {
           "cert": "../crypto-config/peerOrganizations/1dn.mb/users/Admin@1dn.mb/msp/signcerts/Admin@1dn.mb-cert.pem",
-          "private_key": "../crypto-config/peerOrganizations/1dn.mb/users/Admin@1dn.mb/msp/keystore/5db72b2015fb80cc244a3fb7d1bc71fc6b60c83321b6b86d20fe077d6b7affdc_sk"
+          "private_key": "../crypto-config/peerOrganizations/1dn.mb/users/Admin@1dn.mb/msp/keystore/51ba6c4d57ed6eb2eae2c7a614daf58b8bd23498ae9099e9e126bee954f08035_sk"
         }
       }
     }
   },
   "orderers":{
-    "orderer.mb":{
-      "url":"192.168.0.12:7050",
+    "raft1.orderer.mb":{
+      "url":"192.168.0.11:7050",
       "grpcOptions": {
-        "grpc.ssl_target_name_override": "orderer.mb",
+        "grpc.ssl_target_name_override": "raft1.orderer.mb",
         "grpc-max-send-message-length": 15
       },
       "tlsCACerts": {
         "path": "../crypto-config/ordererOrganizations/orderer.mb/tlsca/tlsca.orderer.mb-cert.pem"
       },
       "clientKey": {
-        "path": "../crypto-config/ordererOrganizations/orderer.mb/orderers/orderer.mb.orderer.mb/tls/server.key"
+        "path": "../crypto-config/ordererOrganizations/orderer.mb/orderers/raft1.orderer.mb/tls/server.key"
       },
       "clientCert": {
-        "path": "../crypto-config/ordererOrganizations/orderer.mb/orderers/orderer.mb.orderer.mb/tls/server.crt"
+        "path": "../crypto-config/ordererOrganizations/orderer.mb/orderers/raft1.orderer.mb/tls/server.crt"
+      }
+    },
+    "raft2.orderer.mb":{
+      "url":"192.168.0.11:7050",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "raft2.orderer.mb",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "../crypto-config/ordererOrganizations/orderer.mb/tlsca/tlsca.orderer.mb-cert.pem"
+      },
+      "clientKey": {
+        "path": "../crypto-config/ordererOrganizations/orderer.mb/orderers/raft2.orderer.mb/tls/server.key"
+      },
+      "clientCert": {
+        "path": "../crypto-config/ordererOrganizations/orderer.mb/orderers/raft2.orderer.mb/tls/server.crt"
+      }
+    },
+    "raft3.orderer.mb":{
+      "url":"192.168.0.11:7050",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "raft3.orderer.mb",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "../crypto-config/ordererOrganizations/orderer.mb/tlsca/tlsca.orderer.mb-cert.pem"
+      },
+      "clientKey": {
+        "path": "../crypto-config/ordererOrganizations/orderer.mb/orderers/raft3.orderer.mb/tls/server.key"
+      },
+      "clientCert": {
+        "path": "../crypto-config/ordererOrganizations/orderer.mb/orderers/raft3.orderer.mb/tls/server.crt"
       }
     }
   },
   "peers":{
     "peer0.1dn.mb":{
-      "url":"192.168.0.12:7051",
-      "eventUrl":"192.168.0.12:7053",
+      "url":"192.168.0.11:7051",
+      "eventUrl":"192.168.0.11:7053",
       "grpcOptions": {
         "grpc.ssl_target_name_override": "peer0.1dn.mb",
         "grpc-max-send-message-length": 15

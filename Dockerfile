@@ -1,16 +1,14 @@
-FROM python:3.9
+FROM prnascimento/blockchain-client-base:1.0.0 as base-fabric
 
-WORKDIR $HOME
-RUN apt-get install libssl-dev
-RUN pip3 install ecdsa
+RUN groupadd -g 999 python && \
+    useradd -r -u 999 -g python python
 
-RUN git clone https://github.com/hyperledger/fabric-sdk-py.git
-WORKDIR $HOME/fabric-sdk-py
-RUN git checkout tags/v0.8.0
-RUN make install
+RUN mkdir /usr/src/app &&  chown python:python /usr/src/app
+WORKDIR /usr/src/app
 
+USER 999
 
 WORKDIR /usr/src/app/fabpki-cli
-CMD ["python3", "message-ecdsa.py"]
+ENV PATH="/usr/src/venv/bin:$PATH"
 
-
+CMD ["/usr/src/venv/bin/python3", "message-ecdsa.py"]

@@ -2,7 +2,7 @@
 	"network-configs": {
 		"mbblocknet_default": {
 			"name": "mbblocknet_default",
-			"profile": "./connection-profile/1dn.de.json"
+			"profile": "./connection-profile/1dn.mb.json"
 		}
 	},
 	"license": "Apache-2.0"

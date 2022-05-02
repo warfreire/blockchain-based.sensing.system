@@ -1,12 +1,12 @@
 version: "2"
 
 services:
-  client-mdpi:
-    container_name: client-mdpi
-    image: client-mdpi:1.0.0
+  blk-client:
+    container_name: blk-client
+    image: prnascimento/blockchain-client-base:1.0.0
     build: .
     volumes:
-#      - /Users/warlleyfreire/Documents/Blockchain/MDPI/blockchain-based.sensing.system-build-dockerfile:/usr/src/app
       - ./:/usr/src/app
-
-
+    cpus: 0.7
+    mem_limit: 20M
+    memswap_limit: 40M

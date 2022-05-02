@@ -19,7 +19,11 @@ OrdererOrgs:
     # Usando quinta.com como dominio raiz para todos os peers
     Domain: orderer.mb
     Specs:
-      - Hostname: orderer.mb
+      - Hostname: solo
+      - Hostname: raft1
+      - Hostname: raft2
+      - Hostname: raft3
+
 # ---------------------------------------------------------------------------
 # "PeerOrgs" - Define as organizacoes que gerenciam os peers
 # ---------------------------------------------------------------------------

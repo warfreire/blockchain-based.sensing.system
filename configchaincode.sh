@@ -20,7 +20,7 @@
 
 # Remember to configure these auxiliar vars. They must reflect any name change
 # when necessary.
-ORDERER=orderer.mb:7050
+ORDERER=raft1.orderer.mb:7050
 CHANNEL=mb-channel
 MSPCONFIGPATH=/etc/hyperledger/admsp
 CAFILE=/etc/hyperledger/tlscacerts/tlsca.orderer.mb-cert.pem

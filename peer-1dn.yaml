@@ -42,13 +42,15 @@ services:
         - ./crypto-config/peerOrganizations/1dn.mb/peers/peer0.1dn.mb/msp:/etc/hyperledger/msp #Peers MSP credentials to the GOSSIP protocol
         - ./crypto-config/peerOrganizations/1dn.mb/peers/peer0.1dn.mb/tls:/etc/hyperledger/tls #TLS certificates
         - ./crypto-config/peerOrganizations/1dn.mb/users/Admin@1dn.mb/msp:/etc/hyperledger/admsp #Admin user MSP credentials
-        - ./crypto-config/ordererOrganizations/orderer.mb/orderers/orderer.mb.orderer.mb/msp/tlscacerts:/etc/hyperledger/tlscacerts #Orderer credentials
+        - ./crypto-config/ordererOrganizations/orderer.mb/msp/tlscacerts:/etc/hyperledger/tlscacerts #Orderer credentials
     # The section extra_hosts resolve the domain names for a multi host deploy.
     # You MUST to inform the IP addresses for each peer outside of your network.
     # You also CAN define the vars in the .env file (more practical, since you define
     # in one place alone.)
     extra_hosts:
-      - "orderer.mb:${ORDERER_IP}"
+      - "raft1.orderer.mb:${ORDERER_IP}"
+      - "raft2.orderer.mb:${ORDERER_IP}"
+      - "raft3.orderer.mb:${ORDERER_IP}"
       #- "peer0.1dn.mb:${1DN_IP_1}"
       #- "peer1.1dn.mb:${1DN_IP_1}"
       - "peer0.2dn.mb:${INMETRO_IP_1}"
@@ -85,13 +87,15 @@ services:
         - ./crypto-config/peerOrganizations/1dn.mb/peers/peer1.1dn.mb/msp:/etc/hyperledger/msp #Peers MSP credentials to the GOSSIP protocol
         - ./crypto-config/peerOrganizations/1dn.mb/peers/peer1.1dn.mb/tls:/etc/hyperledger/tls #TLS certificates
         - ./crypto-config/peerOrganizations/1dn.mb/users/Admin@1dn.mb/msp:/etc/hyperledger/admsp #Admin user MSP credentials
-        - ./crypto-config/ordererOrganizations/orderer.mb/orderers/orderer.mb.orderer.mb/msp/tlscacerts:/etc/hyperledger/tlscacerts #Orderer credentials
+        - ./crypto-config/ordererOrganizations/orderer.mb/msp/tlscacerts:/etc/hyperledger/tlscacerts #Orderer credentials
     # The section extra_hosts resolve the domain names for a multi host deploy.
     # You MUST to inform the IP addresses for each peer outside of your network.
     # You also CAN define the vars in the .env file (more practical, since you define
     # in one place alone.)
     extra_hosts:
-      - "orderer.mb:${ORDERER_IP}"
+      - "raft1.orderer.mb:${ORDERER_IP}"
+      - "raft2.orderer.mb:${ORDERER_IP}"
+      - "raft3.orderer.mb:${ORDERER_IP}"
       #- "peer0.1dn.mb:${1DN_IP_1}"
       #- "peer1.1dn.mb:${1DN_IP_1}"
       - "peer0.2dn.mb:${INMETRO_IP_1}"
@@ -125,13 +129,15 @@ services:
       - ./crypto-config/peerOrganizations/1dn.mb/peers/peer0.1dn.mb/msp:/etc/hyperledger/msp #Peers MSP credentials to the GOSSIP protocol
       - ./crypto-config/peerOrganizations/1dn.mb/peers/peer0.1dn.mb/tls:/etc/hyperledger/tls #TLS certificates
       - ./crypto-config/peerOrganizations/1dn.mb/users/Admin@1dn.mb/msp:/etc/hyperledger/admsp #Admin user MSP credentials
-      - ./crypto-config/ordererOrganizations/orderer.mb/orderers/orderer.mb.orderer.mb/msp/tlscacerts/:/etc/hyperledger/tlscacerts #Orderer credentials
+      - ./crypto-config/ordererOrganizations/orderer.mb/msp/tlscacerts/:/etc/hyperledger/tlscacerts #Orderer credentials
     # The section extra_hosts resolve the domain names for a multi host deploy.
     # You MUST to inform the IP addresses for each peer outside of your network.
     # You also CAN define the vars in the .env file (more practical, since you define
     # in one place alone.)
     extra_hosts:
-      - "orderer.mb:${ORDERER_IP}"
+      - "raft1.orderer.mb:${ORDERER_IP}"
+      - "raft2.orderer.mb:${ORDERER_IP}"
+      - "raft3.orderer.mb:${ORDERER_IP}"
       #- "peer0.1dn.mb:${1DN_IP_1}"
       #- "peer1.1dn.mb:${1DN_IP_1}"
       - "peer0.2dn.mb:${INMETRO_IP_1}"
