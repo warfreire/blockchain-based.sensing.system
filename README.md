@@ -172,47 +172,24 @@ Use the **upgrade** command to enable a new version of the chaincode. That is ne
 
 ## Dealing with client applications
 
-The client application is a set of Python 3 modules that use the blockchain network's chaincode services. They use the Python ECDSA library (which implements our cryptosystem) and the Fabric Python SDK.
+The client application is a set of Python 3 modules that use the blockchain network's chaincode services. They use the Python ECDSA library (which implements our cryptosystem) and the Fabric Python SDK. In this 2.1 version, we dockerized the blockchain client, compacting together all libraries and dependencies required by the blockchain-client in a container. This improvement allows us to significantly reduce scalability attrition on preparing the sensing nodes. Additionally, we explore Docker functionalities to realize a performance  assessment, changing and testing the container's available CPU and memory. Through this experimentation we pinpoint optimized hardware configuration in order to use low-cost IoT devices, as a Raspberry Pi, besides requiring less computational power thus using less battery power (a requisity to sensing nodes in a MMS). 
 
-You need to install some dependencies and libraries before getting the clients running correctly. We described all the steps necessary to prepare your machine to do that.
+Without the use of containers, in this stage of this tutorial, it would be necessary to install the ECDSA Python Library and Fabric Python SDK. In previous works, this preparation oftens presents challenges regardless of different versions of the Raspberry Pi OS. However, the dockerization  bypasses those challenges, delivering a prepared environment within the container. 
 
-### Get pip3
 
-Install the Python PIP3 using the following command:
+### Starting the container.
 
-```console
-sudo apt install python3-pip
-```
+With the Docker installed in the client, you can run the following script to start the container, plus calling another script to monitor the container performance:
 
-### Get the ECDSA Python Library
 
-The ECDSA library implements the directives related to the Elliptic Curves algorithms. You can find more details [here](https://pypi.org/project/ecdsa/). Run the following command to install the ECDSA library.
+Blockchain-client container start:
 
 ```console
-pip3 install ecdsa
+./start_container.sh
 ```
 
-### Get the Fabric Python SDK
+You can edit this script to set the desired testing rounds. In our experiment we realize 30 rounds with each setup of the container's available CPU (10%, 30%, 50%, 70%, and 90%) and memory (18MB, 20MB, 25MB, and 30MB). To set these configurations you have to edit the [docker-compose.yaml](/docker-compose.yaml) . To adjust the container available CPU edit line 10 "cpus" (e.g. cpus: 0.7 uses 70% of one core and cpus: 1.3 uses 100% of one core and 30% of the second). To adjust available memory edit line 11 "mem-limit" (e.g. 20M uses 20MB of memory).
 
-The [Fabric Python SDK](https://github.com/hyperledger/fabric-sdk-py) is not part of the Hyperledger Project. It is maintained by an independent community of users from Fabric. However, this SDK works fine, at least to the basic functionalities we need.
-
-Recently, we had problems with broke interfaces that made our programs stoped of running. Thus we adopted the 0.8.0 version of the Python SDK (and the respective tag) as our "stable" version.
-
-You need to install the Python SDK dependencies first:
-
-```console
-sudo apt-get install python-dev python3-dev libssl-dev
-```
-
-Finally, install the Python SDK using *git*. Notice that the repository is cloned into the current path, so we recommend installing it in your $HOME directory. After cloning the repository, it is necessary to check out the tag associated with the version 0.8.0.
-
-```console
-cd $HOME
-git clone https://github.com/hyperledger/fabric-sdk-py.git
-cd fabric-sdk-py
-git checkout tags/v0.8.0
-sudo make install
-```
 
 ### Configure the JSON network profile
 The Python SDK applications depend on a **network profile** encoded in JSON format and the network profile changes accordingly to them. In this repository, we provide the file [1dn.mb.json](fabpki-cli/1dn.mb.json). The network profile keeps the necessary credentials to access the blockchain network. You must configure this file properly every time that you create new digital certificates in the MSP:
@@ -223,11 +200,12 @@ The Python SDK applications depend on a **network profile** encoded in JSON form
 * Modify the .json file with the correct name and path of each required file;
 * Also, verify the explicit IP addresses related to the known orderer and entry peer. They must reflect your network configuration.
 
+
 ### The Client Application module
 
 The Client Application includes the following module:
 
-* [sendMessage.py](fabpki-cli/keygen-ecdsa.py): It is a Python script that receive and process the AIS data received on NMEA format. This format is a standardization National Marine Electronics Association used in GPS, AIS, VTS and other maritime services.
+* [message-ecdsa.py](fabpki-cli/message-ecdsa.py): It is a Python script that receive and process the AIS data received on NMEA format. This format is a standardization National Marine Electronics Association used in GPS, AIS, VTS and other maritime services.
 
 
 ## Monitoring local ledger copies with Fauxton and Mango
