@@ -9,9 +9,9 @@ Research team:
 * *[Wilson S. Melo Jr.](https://www.researchgate.net/profile/Wilson-Melo-Junior) (wsjunior@inmetro.gov.br)*
 * *[Paulo R. M. Nascimento](https://github.com/paulormnasr) (prnascimento@inmetro.gov.br)*
 * *[Vinicius Dalto do Nascimento](https://www.researchgate.net/profile/Wilson-Melo-Junior) (dalto@cos.ufrj.br)*
-* *[Alan Oliveira de Sá](https://www.researchgate.net/profile/Wilson-Melo-Junior) (alan.oliveira.sa@gmail.com)*
+* *[Alan Oliveira de Sá](https://ciencias.ulisboa.pt/pt/perfil/aodsa) (alan@di.fc.ul.pt)*
 
-*Revised on June 10th, 2021.*
+*Revised on March 18th, 2024.*
 
 ## What the experiment is:
 
@@ -23,6 +23,8 @@ We adopt [Hyperledger Fabric 1.4 LTS](https://hyperledger-fabric.readthedocs.io/
 We describe in the next sections the main aspects related to the  blockchain network customizing, how to instantiate the network, how to deploy a chaincode, and how to use a simple Python client to invoke it.
 
 We also invite the reader to check out our previous publications related to this project. They are listed below:
+
+* [Freire, W., Melo, W., Nascimento, V., Nscimento, P., Sá, A. (2022). Towards a Secure and Scalable Maritime Monitoring System using Blockchain and Low-cost IoT Technology](https://www.mdpi.com/1424-8220/22/13/4895)
 
 * [Freire, W., Melo, W., Nascimento, V., Sá, A. (2021). Blockchain-based Maritime Monitoring System](https://ieeexplore.ieee.org/abstract/document/9611587)
 
